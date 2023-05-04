@@ -140,9 +140,10 @@
       emacs
       wezterm
       vscodium
+      bibata-cursors
 
-      gnomeExtensions.pop-shell
       gnomeExtensions.paperwm
+      gnome.gnome-tweaks
       just
 
       eww-wayland
