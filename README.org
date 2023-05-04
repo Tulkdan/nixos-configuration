@@ -2,6 +2,24 @@
 #+AUTHOR: Tulkdan
 #+EMAIL: pedro8correa@gmail.com
 
+#+begin_src nix :tangle flake.nix :noweb yes
+  {
+    <<description>>
+
+    inputs = {
+      <<inputs>>
+    };
+
+    outputs = {self, nixpkgs}: let
+      system = "x86_64-linux";
+      hostname = "nixos";
+      pkgs = import nixpkgs {inherit system;};
+    in {
+      <<outputs>>
+    };
+  }
+#+end_src
+
 ** Description
 #+NAME: description
 #+begin_src nix
@@ -9,40 +27,27 @@
 #+end_src
 
 ** Inputs
-#+NAME: inputs
+:PROPERTIES:
+:header-args: :noweb-ref inputs
+:END:
+
+*** Nixpkgs
+
 #+begin_src nix
-    inputs = {
-      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+  nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 #+end_src
 
 ** Outputs
-#+NAME: outputs
+:PROPERTIES:
+:header-args: :noweb-ref outputs
+:END:
+
+*** NixOS System
 #+begin_src nix
-  outputs = {self, nixpkgs}: let
-    system = "x86_64-linux";
-    hostname = "nixos";
-    pkgs = import nixpkgs {inherit system;};
-  in {
+  nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+    inherit system;
 
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      inherit system;
-
-      modules = [ ./system/configuration.nix ];
-    };
-
+    modules = [ ./system/configuration.nix ];
   };
 #+end_src
 
-
-** Final nix
-
-#+begin_src nix :tangle flake.nix :noweb yes
-  {
-    <<description>>
-
-    <<inputs>>
-
-    <<outputs>>
-  }
-#+end_src

@@ -10,13 +10,10 @@
     hostname = "nixos";
     pkgs = import nixpkgs {inherit system;};
   in {
-  
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       inherit system;
-  
+    
       modules = [ ./system/configuration.nix ];
     };
-  
   };
-
 }
