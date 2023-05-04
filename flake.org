@@ -1,0 +1,47 @@
+#+TITLE: Flake configuration
+#+AUTHOR: Tulkdan
+#+EMAIL: pedro8correa@gmail.com
+#+PROPERTY: header-args :tangle flake.nix
+* Flake on org file
+
+#+begin_src nix
+  {
+#+end_src
+
+** Description
+
+#+begin_src nix
+  description = "Tulk'dan's system config";
+#+end_src
+
+** Inputs
+#+begin_src nix
+  inputs = {
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+  };
+#+end_src
+
+** Outputs
+
+#+begin_src nix
+  outputs = {self, nixpkgs}: let
+    system = "x86_64-linux";
+    hostname = "nixos";
+    pkgs = import nixpkgs {inherit system;};
+  in {
+
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [ ./system/configuration.nix ];
+    };
+
+  };
+#+end_src
+
+** End of file
+
+#+begin_src nix
+  }
+#+end_src
+
