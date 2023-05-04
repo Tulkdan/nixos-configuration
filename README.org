@@ -1,1 +1,48 @@
-* My nix configuration
+#+TITLE: Flake configuration
+#+AUTHOR: Tulkdan
+#+EMAIL: pedro8correa@gmail.com
+
+** Description
+#+NAME: description
+#+begin_src nix
+  description = "Tulk'dan's system config";
+#+end_src
+
+** Inputs
+#+NAME: inputs
+#+begin_src nix
+    inputs = {
+      nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+#+end_src
+
+** Outputs
+#+NAME: outputs
+#+begin_src nix
+  outputs = {self, nixpkgs}: let
+    system = "x86_64-linux";
+    hostname = "nixos";
+    pkgs = import nixpkgs {inherit system;};
+  in {
+
+    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+      inherit system;
+
+      modules = [ ./system/configuration.nix ];
+    };
+
+  };
+#+end_src
+
+
+** Final nix
+
+#+begin_src nix :tangle flake.nix :noweb yes
+  {
+    <<description>>
+
+    <<inputs>>
+
+    <<outputs>>
+  }
+#+end_src
