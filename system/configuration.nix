@@ -87,11 +87,6 @@
 
     # Adding support for flatpak
     flatpak.enable = true;
-
-    emacs = {
-      enable = true;
-      package = pkgs.emacs;
-    };
   };
 
   # Enable sound with pipewire.
@@ -105,21 +100,13 @@
   # services.xserver.libinput.enable = true;
 
   programs = {
-    # Enabling zsh
-    zsh = {
-      enable = true;
-      ohMyZsh = {
-        enable = true;
-        plugins = [ "git" ];
-      };
-    };
-
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
       enableExtraSocket = true;
     };
 
+    zsh.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -127,29 +114,6 @@
     isNormalUser = true;
     description = "Pedro";
     extraGroups = [ "networkmanager" "wheel" "tty" ];
-    packages = with pkgs; [
-      firefox
-    #  thunderbird
-      neovim
-      nodejs
-      ghc
-      alacritty
-      oh-my-zsh
-      direnv
-      gnupg
-      emacs
-      wezterm
-      vscodium
-      bibata-cursors
-
-      gnomeExtensions.paperwm
-      gnome.gnome-tweaks
-      just
-
-      eww-wayland
-      ripgrep
-      jq
-    ];
     shell = pkgs.zsh;
   };
 
@@ -175,12 +139,6 @@
       vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       wget
     ];
-
-    variables = {
-      EDITOR = "nvim";
-      VISUAL = "nvim";
-      BROWSER = "firefox";
-    };
   };
 
 
