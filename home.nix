@@ -22,7 +22,6 @@
       nodejs
       ghc
       direnv
-      gnupg
       wezterm
       vscodium
       bibata-cursors
@@ -294,6 +293,8 @@
     home-manager.enable = true;
 
     emacs.enable = true;
+
+    gpg.enable = true;
 
     starship.enable = true;
 
