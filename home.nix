@@ -78,8 +78,6 @@
   #
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
-    # EDITOR = "emacs";
-    EDITOR = "emacs";
     VISUAL = "emacs";
     BROWSER = "firefox";
   };
@@ -116,6 +114,14 @@
       extraConfig = ''
         allow-emacs-pinentry
       '';
+    };
+
+    emacs = {
+      enable = true;
+
+      client.enable = true;
+
+      defaultEditor = true;
     };
   };
 
