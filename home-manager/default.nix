@@ -101,6 +101,7 @@
     zsh = {
       enable = true;
       enableSyntaxHighlighting = true;
+      dotDir = ".config/zsh";
       oh-my-zsh = {
         enable = true;
         plugins = [ "git" ];
