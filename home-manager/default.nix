@@ -7,6 +7,7 @@
   home.homeDirectory = "/home/${username}";
 
   imports = [
+    ./alacritty
     ./git
     ./firefox
   ];
@@ -88,8 +89,6 @@
 
   # Let Home Manager install and manage itself.
   programs = {
-    alacritty.enable = true;
-
     home-manager.enable = true;
 
     emacs.enable = true;
