@@ -161,7 +161,7 @@ Forcing emacs to get all the env var from my machine
    #+begin_src emacs-lisp
      (use-package ivy
        :diminish
-       :bind (("C-s" . swiper)
+       :bind (("C-s" . swiper-thing-at-point)
               :map ivy-minibuffer-map
               ("TAB" . ivy-alt-done)
               ("C-l" . ivy-alt-done)
