@@ -117,16 +117,6 @@
         allow-emacs-pinentry
       '';
     };
-
-    emacs = {
-      enable = true;
-
-      client.enable = true;
-
-      defaultEditor = true;
-
-      startWithUserSession = true;
-    };
   };
 
   xdg.enable = true;
