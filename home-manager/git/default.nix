@@ -12,4 +12,6 @@
       commit.template = "~/.config/git/message";
     };
   };
+
+  home.file.".config/git/message".source = ./message;
 }
