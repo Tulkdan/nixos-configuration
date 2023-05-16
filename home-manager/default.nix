@@ -11,6 +11,7 @@
     ./emacs
     ./git
     ./firefox
+    ./vscode
   ];
 
   # This value determines the Home Manager release that your configuration is
@@ -30,7 +31,6 @@
       ghc
       direnv
       wezterm
-      vscodium
       bibata-cursors
 
       gnomeExtensions.paperwm
