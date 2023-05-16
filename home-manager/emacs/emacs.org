@@ -1,0 +1,665 @@
+#+title Emacs Configuration
+
+* Emacs Basic Configuration
+
+Here I'm forcing some basic configuration from emacs for my liking
+#+begin_src emacs-lisp
+  (setq user-mail-address "pedro.correa@zigpay.com.br")
+  (setq user-full-name "Pedro Correa")
+
+  (set-mouse-color "GhostWhite")
+#+end_src
+
+Activating ~hs-minor-mode~ on `prog-mode~ so I can fold functions based on indentation
+#+begin_src emacs-lisp
+  (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t)))
+#+end_src
+
+* Package
+
+  #+begin_src emacs-lisp
+
+    ;; Initialize package sources
+    (require 'package)
+
+    (setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                             ("org" . "https://orgmode.org/elpa/")
+                             ("elpa" . "https://elpa.gnu.org/packages/")))
+
+    (package-initialize)
+    (unless package-archive-contents
+      (package-refresh-contents))
+
+    ;; Initialize use-package on non-Linux platforms
+    (unless (package-installed-p 'use-package)
+      (package-install 'use-package))
+
+    (require 'use-package)
+    (setq use-package-always-ensure t)
+#+end_src
+
+Forcing emacs to get all the env var from my machine
+#+begin_src emacs-lisp
+  (use-package exec-path-from-shell
+    :config (exec-path-from-shell-initialize))
+
+  (dolist (var '("SSH_AUTH_SOCK" "GPG_AGENT_INFO" "LANG" "NIX_PATH" "GPG_TTY"))
+    (add-to-list 'exec-path-from-shell-variables var))
+#+end_src
+
+* Basic UI Configuration
+
+  #+begin_src emacs-lisp
+    (set-frame-parameter (selected-frame) 'alpha '(100 . 100))
+    (add-to-list 'default-frame-alist '(alpha . (100 . 100)))
+
+    (setq inhibit-startup-message t)
+
+    (scroll-bar-mode -1)           ; Disable visible scroll
+    (tool-bar-mode -1)             ; Disable the toolbar
+    (tooltip-mode -1)              ; Disable tooltips
+    (set-fringe-mode 10)           ; Give some breathing room
+
+    (menu-bar-mode -1)             ; Disable the menu bar
+
+    ;; Set up visible bell
+    (setq visible-bell t)
+  #+end_src
+  
+** Dashboard
+  #+begin_src emacs-lisp
+    (use-package dashboard
+      :ensure t
+      :config
+      (dashboard-setup-startup-hook)
+      (setq dashboard-startup-banner "~/Pictures/ship-it.png")
+      (setq dashboard-week-agenda t)
+      (setq dashboard-items '((recents . 5)
+                              (projects . 5)
+                              (agenda . 5))))
+  #+end_src
+
+** Line Numbers
+#+begin_src emacs-lisp
+    (column-number-mode)
+    (global-display-line-numbers-mode t)
+    (setq display-line-numbers-type 'relative)
+
+    ;; Disable line numbers for some modes
+    (dolist (mode '(org-mode-hook
+                    term-mode-hook
+                    eshell-mode-hook
+                    shell-mode-hook
+                    neotree-mode-hook
+                    elfeed-mode-hook))
+      (add-hook mode (lambda () (display-line-numbers-mode 0))))
+#+end_src
+
+** Font Configuration
+
+   #+begin_src emacs-lisp
+     (set-face-attribute 'default nil
+                         :family "Hasklig"
+                         :height 110
+                         :weight 'normal
+                         :width 'normal)
+
+     (use-package hasklig-mode
+       :hook (haskell-mode prog-mode))
+   #+end_src
+
+*** Emoji
+#+begin_src emacs-lisp
+  (use-package emojify
+    :hook (after-init . global-emojify-mode))
+#+end_src
+
+** Themes
+
+   #+begin_src emacs-lisp
+      (use-package doom-themes
+        :ensure t
+        :config
+        (setq doom-themes-enable-bold t
+              doom-themes-enable-italic t)
+        (load-theme 'doom-snazzy t)
+        (doom-themes-visual-bell-config)
+        (doom-themes-org-config))
+
+
+      (use-package doom-modeline
+        :ensure t
+        :hook (after-init . doom-modeline-mode)
+        :custom ((doom-modeline-height 15)))
+
+      (use-package all-the-icons
+        :if (display-graphic-p))
+   #+end_src
+
+** Neotree
+#+begin_src emacs-lisp
+  (use-package neotree
+    :config
+    (setq neo-theme 'ascii)
+    (setq neo-smart-open nil))
+#+end_src
+
+* Keybinding
+
+** Custom
+
+   #+begin_src emacs-lisp
+     ;; Make ESC quit prompts
+     (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+
+     ;; Toggle neotree panel
+     (global-set-key (kbd "<f5>") 'neotree-toggle)
+   #+end_src
+   
+** Ivy and Counsel
+
+   #+begin_src emacs-lisp
+     (use-package ivy
+       :diminish
+       :bind (("C-s" . swiper)
+              :map ivy-minibuffer-map
+              ("TAB" . ivy-alt-done)
+              ("C-l" . ivy-alt-done)
+              ("C-j" . ivy-next-line)
+              ("C-k" . ivy-previous-line)
+              :map ivy-switch-buffer-map
+              ("C-k" . ivy-previous-line)
+              ("C-l" . ivy-done)
+              ("C-d" . ivy-switch-buffer-kill)
+              :map ivy-reverse-i-search-map
+              ("C-k" . ivy-previous-line)
+              ("C-d" . ivy-reverse-i-search-kill))
+       :config
+       (ivy-mode 1))
+
+     (use-package ivy-rich
+       :init
+       (ivy-rich-mode 1))
+
+     (use-package which-key
+       :init (which-key-mode)
+       :diminish which-key-mode
+       :config
+       (setq which-key-idle-delay 0.3))
+
+     (use-package counsel
+       :bind (("M-x" . counsel-M-x)
+              ("C-x b" . counsel-ibuffer)
+              ("C-x C-f" . counsel-find-file)
+              :map minibuffer-local-map
+              ("C-r" . 'counsel-minibuffer-history)))
+   #+end_src
+
+** Evil and General
+
+   #+begin_src emacs-lisp
+     (use-package general
+       :after evil
+       :config
+       (general-create-definer tulkdan/leader-keys
+         :states '(normal insert visual emacs)
+         :prefix "SPC"
+         :global-prefix "C-SPC")
+       (tulkdan/leader-keys
+         "g" 'magit-status
+         "c" (general-simulate-key "C-c")
+         "x" (general-simulate-key "C-x")))
+
+     (use-package evil
+       :init
+       (setq evil-want-integration t)
+       (setq evil-want-keybinding nil)
+       (setq evil-want-C-u-scroll t)
+       (setq evil-want-C-i-jump nil)
+       :config
+       (evil-mode 1)
+
+       (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+       (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+       (evil-set-initial-state 'messages-buffer-mode 'normal)
+       (evil-set-initial-state 'dashboard-mode 'normal))
+
+     (use-package evil-collection
+       :after evil
+       :config
+       (evil-collection-init))
+   #+end_src
+
+* Development
+
+** EditorConfig
+   #+begin_src emacs-lisp
+     (use-package editorconfig
+       :ensure t
+       :config
+       (editorconfig-mode 1))
+   #+end_src
+
+** Magit
+
+   #+begin_src emacs-lisp
+     (use-package magit
+       :custom
+       (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
+   #+end_src
+   
+** Projectile
+
+   #+begin_src emacs-lisp
+     (use-package projectile
+       :diminish projectile-mode
+       :custom ((projectile-completion-system 'ivy))
+       :bind-keymap
+       ("C-c p" . projectile-command-map)
+       :init
+       (projectile-mode t)
+       :config
+       (setq projectile-enable-caching t)
+       (setq projectile-switch-project-action #'projectile-dired)
+       (setq projectile-switch-project-action #'neotree-projectile-action))
+
+     (use-package counsel-projectile
+       :after projectile
+       :config (counsel-projectile-mode))
+   #+end_src
+
+** LSP
+   #+begin_src emacs-lisp
+     (use-package lsp-mode
+       :commands (lsp lsp-deferred)
+       :init
+       (setq lsp-keymap-prefix "C-c l")
+       :custom
+       (lsp-rust-analyzer-cargo-watch-command "clippy")
+       (lsp-rust-analyzer-server-display-inlay-hints t)
+       (lsp-eldoc-render-all t)
+       :config
+       (lsp-enable-which-key-integration t)
+       (lsp-javascript-inlay-hints-mode t)
+       (lsp-idle-delay 0.5)
+       :hook
+       (typescript-mode . lsp-deferred) ;; auto activating lsp when typescript mode is active
+       (haskell-mode . lsp-deferred)
+       (kotlin-mode . lsp-deferred)
+       (haskell-literate-mode . lsp-deferred))
+    #+end_src
+    
+*** lsp-ui
+#+begin_src emacs-lisp
+  (use-package lsp-ui
+    :hook (lsp-mode . lsp-ui-mode)
+    :custom
+    (lsp-ui-doc-position 'bottom))
+#+end_src
+
+*** lsp-ivy 
+#+begin_src emacs-lisp
+  (use-package lsp-ivy)
+#+end_src
+
+*** lsp-treemacs 
+#+begin_src emacs-lisp
+  (use-package lsp-treemacs)
+#+end_src
+   
+*** Dap Mode
+#+begin_src emacs-lisp
+  (use-package dap-mode)
+#+end_src
+** Company (code completion)
+   #+begin_src emacs-lisp
+  (use-package company
+    :after lsp-mode
+    :hook (lsp-mode . company-mode)
+    :custom
+    (company-idle-delay 0.0)
+    (company-minimum-prefix-length 1)
+    (company-show-numbers t "Numbers are helpful.")
+    (company-tooltip-limit 10 "The more the merrier.")
+    :config
+    (setq company-lsp-cache-candidates 'auto)
+    :bind
+    (:map company-active-map
+	  ("<tab>" . company-complete-selection))
+    (:map lsp-mode-map
+	  ("<tab>" . company-indent-or-complete-common)))
+   #+end_src
+
+** Flycheck (Inline Errors)
+   #+begin_src emacs-lisp
+     (use-package flycheck
+       :ensure t
+       :init (global-flycheck-mode)
+       :config
+       (add-hook 'prog-mode-hook 'flycheck-mode)) ;; always lint my code
+   #+end_src
+
+** Eglot
+   #+begin_src emacs-lisp
+  (use-package eglot
+    :hook
+    (typescript-mode . eglot-ensure)
+    (kotlin-mode . eglot-ensure)
+    :ensure t)
+    #+end_src
+
+** Direnv
+#+begin_src emacs-lisp
+  (use-package direnv
+    :config
+    (direnv-mode))
+#+end_src
+
+** Languages
+*** Web
+#+begin_src emacs-lisp
+  (use-package web-mode
+    :config
+    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
+#+end_src
+
+*** Typescript
+#+begin_src emacs-lisp
+  (use-package typescript-mode
+    :mode "\\.ts\\'"
+    :hook (typecript-mode . lsp-deferred))
+#+end_src
+
+*** Haskell
+#+begin_src emacs-lisp
+  (use-package lsp-haskell)
+  (use-package haskell-mode
+    :hook (haskell-mode . lsp-deferred))
+#+end_src
+
+*** Lua
+#+begin_src emacs-lisp
+    (use-package lua-mode
+      :mode "\\.lua\\'")
+#+end_src
+
+*** Kotlin
+#+begin_src emacs-lisp
+  (use-package kotlin-mode
+    :mode "\\.kt\\'"
+    :hook (kotlin-mode . lsp-deferred))
+#+end_src
+
+*** Yuck (EWW)
+#+begin_src emacs-lisp
+  (use-package yuck-mode
+    :mode "\\.yuck\\'")
+#+end_src
+
+*** Flutter
+#+begin_src emacs-lisp
+  (use-package dart-mode)
+  (use-package lsp-dart
+    :hook (dart-mode . lsp-deferred))
+#+end_src
+
+*** Nix
+#+begin_src emacs-lisp
+  (use-package nix-mode
+    :mode "\\.nix\\'")
+#+end_src
+
+** DevOps
+*** Kubernetes
+Enables plugin to we can use kubectl inside of emacs
+#+begin_src emacs-lisp
+    (use-package kubernetes
+      :config
+      (setq kubernetes-poll-frequency (* 60 5)) ; frequency in seconds
+      (setq kubernetes-redraw-frequency (* 60 5)) ; frequency in seconds
+      (setq kubernetes-pod-restart-warning-threshold 60))
+#+end_src
+
+Install package to be compatible with evil mode
+#+begin_src emacs-lisp
+  (use-package kubernetes-evil
+    :ensure t
+    :after kubernetes)
+#+end_src
+
+* Org Mode
+
+** Better Font Faces
+   #+begin_src emacs-lisp
+     (defun tulkdan/org-font-setup ()
+       ;; Replace list hyphen with dot
+       (font-lock-add-keywords 'org-mode
+			       '(("^ *\\([-]\\) "
+				  (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+       ;; Set faces for heading levels
+       (dolist (face '((org-level-1 . 1.2)
+		       (org-level-2 . 1.1)
+		       (org-level-3 . 1.05)
+		       (org-level-4 . 1.0)
+		       (org-level-5 . 1.1)
+		       (org-level-6 . 1.1)
+		       (org-level-7 . 1.1)
+		       (org-level-8 . 1.1)))
+        (set-face-attribute (car face) nil :font "Hasklig" :weight 'regular :height (cdr face)))
+
+       ;; Ensure that anything that should be fixed-pitch in Org files appears that way
+       (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
+       (set-face-attribute 'org-table nil    :inherit 'fixed-pitch)
+       (set-face-attribute 'org-formula nil  :inherit 'fixed-pitch)
+       (set-face-attribute 'org-code nil     :inherit '(shadow fixed-pitch))
+       (set-face-attribute 'org-table nil    :inherit '(shadow fixed-pitch))
+       (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+       (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+       (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+       (set-face-attribute 'org-checkbox nil  :inherit 'fixed-pitch)
+       (set-face-attribute 'line-number nil :inherit 'fixed-pitch)
+       (set-face-attribute 'line-number-current-line nil :inherit 'fixed-pitch))
+   #+end_src
+
+** Basic Configuration
+
+    #+begin_src emacs-lisp
+      (defun tulkdan/org-mode-setup ()
+        ;; (org-indent-mode)
+        (variable-pitch-mode 1)
+        (visual-line-mode 1))
+
+      (use-package org
+        :pin org
+        :commands (org-capture org-agenda)
+        :hook (org-mode . tulkdan/org-mode-setup)
+        :config
+        (setq org-ellipsis " ▾")
+
+        (setq org-log-done 'time)
+        (setq org-log-into-drawer t)
+
+        (setq org-agenda-file-regexp ".*\\.org$")
+        (setq org-agenda-files '("~/Documents/Tasks"))
+
+        (setq org-todo-keywords
+              '((sequence "BLOCKED(b@)" "PLAN(p)" "NEXT(n)" "WORKING(w)" "REVIEW(v)" "|" "DONE(d!)" "CANC(k@)")
+                (sequence "TODO(t)" "DOING(a)" "|" "COMPLETED(c!)" "CANCELED(C)")))
+
+        (setq org-todo-keyword-faces
+              '(("BLOCKED" . "red") ))
+
+        (setq org-refile-targets
+              '(("Archive.org" :maxlevel . 1)
+                ("Tasks.org" :maxlevel . 1)))
+
+        ;; Configure custom agenda views
+        (setq org-agenda-custom-commands
+              '(("d" "Dashboard"
+                 ((agenda "" ((org-deadline-warning-days 7)))
+                  (todo "NEXT"
+                        ((org-agenda-overriding-header "Next Tasks")))
+                  (todo "WORKING"
+                        ((org-agenda-overriding-header "Active Projects")))
+                  (todo "REVIEW"
+                        ((org-agenda-overriding-header "In Review")))))
+
+                ("w" "Workflow Status"
+                 ((todo "BLOCKED"
+                        ((org-agenda-overriding-header "Blocked on External")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "PLAN"
+                        ((org-agenda-overriding-header "In Planning")
+                         (org-agenda-todo-list-sublevels nil)
+                         (org-agenda-files org-agenda-files)))
+                  (todo "REVIEW"
+                        ((org-agenda-overriding-header "In Review")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "WORKING"
+                        ((org-agenda-overriding-header "Active Projects")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "DONE"
+                        ((org-agenda-overriding-header "Completed Projects")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "CANC"
+                        ((org-agenda-overriding-header "Cancelled Projects")
+                         (org-agenda-files org-agenda-files)))))))
+
+        (setq org-link-abbrev-alist
+              '(("clickup" . "https://app.clickup.com/t/")))
+
+        (tulkdan/org-font-setup))
+   #+end_src
+
+** Nicer Heading Bullets
+
+   #+begin_src emacs-lisp
+     ;; using org modern
+     ;; (use-package org-bullets
+     ;;   :hook (org-mode . org-bullets-mode)
+     ;;   :custom
+     ;;   (org-bullets-bullet-list '("◉" "○" "●" "○" "●" "○" "●")))
+   #+end_src
+
+** Center Org Buffers
+
+   #+begin_src emacs-lisp
+     (defun tulkdan/org-mode-visual-fill ()
+       (setq visual-fill-column-width 100
+	     visual-fill-column-center-text t)
+       (visual-fill-column-mode 1))
+
+     (use-package visual-fill-column
+       :hook (org-mode . tulkdan/org-mode-visual-fill))
+   #+end_src
+   
+** Org Modern
+
+#+begin_src emacs-lisp
+     (use-package org-modern
+       :hook (org-mode . org-modern-mode))
+#+end_src
+
+** Structure Templates
+
+   #+begin_src emacs-lisp
+     ;; This is needed as of Org 9.2
+     (require 'org-tempo)
+
+     (add-to-list 'org-structure-template-alist '("sh" . "src shell"))
+     (add-to-list 'org-structure-template-alist '("el" . "src emacs-lisp"))
+     (add-to-list 'org-structure-template-alist '("py" . "src python"))
+     (add-to-list 'org-structure-template-alist '("hs" . "src haskell"))
+     (add-to-list 'org-structure-template-alist '("js" . "src js"))
+     (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
+     (add-to-list 'org-structure-template-alist '("nix" . "src nix"))
+
+     (org-babel-do-load-languages
+      'org-babel-load-languages
+      '((haskell . t)
+        (emacs-lisp . t)))
+  #+end_src
+
+* Managing Mail with mu4e
+
+#+begin_src emacs-lisp
+  (use-package mu4e
+    :ensure nil
+    :load-path "/usr/share/emacs25/site-lisp/mu4e/"
+    :custom
+
+    ;; This is set to 't' to avoid mail syncing issues when using mbsync
+    (mu4e-change-filenames-when-moving t)
+
+    ;; Make sure plain text mails flow correctly for recipients
+    (mu4e-compose-format-flowed t)
+
+    ;; Configure the function to use for sending mail
+    (message-send-mail-function 'smtpmail-send-it)
+
+    ;; Refresh mail using isync every 10 minutes
+    (mu4e-update-interval (* 10 60))
+    (mu4e-get-mail-command "mbsync -a")
+    (mu4e-maildir "~/Mail")
+
+    (mu4e-drafts-folder "/[Gmail]/Drafts")
+    (mu4e-sent-folder "/[Gmail]/Sent Mail")
+    (mu4e-refile-folder "/[Gmail]/All Mail")
+    (mu4e-trash-folder "/[Gmail]/Trash")
+
+    (smtpmail-smtp-server "smtp.gmail.com")
+    (smtpmail-smtp-service 465)
+    (smtpmail-stream-type 'ssl)
+
+    (mu4e-compose-signature
+     (concat
+      "Pedro Correa • Developer\n"
+      "pedro.correa@ciandt.com • ciandt.com"))
+
+    (mu4e-maildir-shortcuts
+     '(("/Inbox" . ?i)
+       ("/[Gmail]/Sent Mail" . ?s)
+       ("/[Gmail]/Trash" . ?t)
+       ("/[Gmail]/Drafts" . ?d)
+       ("/[Gmail]/All Mail" . ?a))))
+#+end_src
+
+** org-mime
+
+This is a configuration to send org files into email
+#+begin_src emacs-lisp
+  (use-package org-mime
+    :ensure t
+    :config
+    (setq org-mime-export-options '(:section-numbers nil
+                                                     :with-author nil
+                                                     :with-toc nil))
+    (add-hook 'message-send-hook 'org-mime-htmlize)
+    (add-hook 'org-mime-html-hook
+              (lambda ()
+                (org-mime-change-element-style
+                 "pre" (format "color: %s; background-color: %s; padding: 0.5rem;"
+                               "#e6e1dc" "#232323")))))
+#+end_src
+
+* Elfeed
+#+begin_src emacs-lisp
+        (use-package elfeed
+            :config
+            (setq elfeed-feeds
+                '(("https://newsletter.mollywhite.net/feed.xml" dev tech)
+                    ("https://stackoverflow.blog/feed/" tech)
+                    ("http://news.ycombinator.com/rss" tech)
+                    ("http://feeds.gawker.com/gizmodo/full" news)
+                    ("http://thepracticaldev.com/feed" dev tech)
+                    ("https://www.nexojornal.com.br/rss.xml" news)
+                    ("https://theintercept.com/feed/?lang=pt" news)
+                    ("http://piaui.folha.uol.com.br/feed/" news)
+                    ("http://www.newslookup.com/rss/business/bloomberg.rss" news)
+                    ("https://xkcd.com/rss.xml")
+                    ("https://github.com/readme.rss" tech dev))))
+#+end_src
+

@@ -8,6 +8,7 @@
 
   imports = [
     ./alacritty
+    ./emacs
     ./git
     ./firefox
   ];
@@ -91,8 +92,6 @@
   programs = {
     home-manager.enable = true;
 
-    emacs.enable = true;
-
     gpg.enable = true;
 
     starship.enable = true;
@@ -125,6 +124,8 @@
       client.enable = true;
 
       defaultEditor = true;
+
+      startWithUserSession = true;
     };
   };
 
