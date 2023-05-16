@@ -11,6 +11,7 @@
     ./emacs
     ./git
     ./firefox
+    ./neovim
     ./vscode
   ];
 
@@ -26,7 +27,6 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-      neovim
       nodejs
       ghc
       direnv
