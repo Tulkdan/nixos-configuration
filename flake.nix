@@ -24,18 +24,19 @@
       inherit system;
     
       modules = [
-        ./system/configuration.nix
+        ./hosts/desktop
+    
         home-manager.nixosModules.home-manager
         {
           home-manager = {
-    	      useGlobalPkgs = true;
-    	      useUserPackages = true;
-    	      users.pedro = import ./home-manager {
-    		      config = self;
-    		      pkgs = pkgs;
-    		      username = users.pedro.username;
-    		      stateVersion = stateVersion;
-    	      };
+            useGlobalPkgs = true;
+            useUserPackages = true;
+            users.pedro = import ./home {
+              config = self;
+              pkgs = pkgs;
+              username = users.pedro.username;
+              stateVersion = stateVersion;
+            };
           };
         }
       ];
