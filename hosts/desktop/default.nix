@@ -113,7 +113,7 @@
   users.users.pedro = {
     isNormalUser = true;
     description = "Pedro";
-    extraGroups = [ "networkmanager" "wheel" "tty" ];
+    extraGroups = [ "networkmanager" "wheel" "tty" "docker" ];
     shell = pkgs.zsh;
   };
 
@@ -185,4 +185,5 @@
     hasklig
   ];
 
+  virtualisation.docker.enable = true;
 }
