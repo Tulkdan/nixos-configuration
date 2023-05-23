@@ -22,6 +22,9 @@
       "editor.minimap.enabled" = false;
       "editor.fontFamily" = "'Hasklig','Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
+      "editor.renderWhitespace" = "trailing";
+      "editor.cursorStyle" = "underline";
+      "editor.lineNumbers" = "relative";
     };
   };
 }
