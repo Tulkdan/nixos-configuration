@@ -29,8 +29,6 @@
   home.packages = with pkgs; [
       nodejs
       ghc
-      direnv
-      wezterm
       bibata-cursors
 
       gnomeExtensions.paperwm
@@ -40,6 +38,9 @@
       eww-wayland
       ripgrep
       jq
+
+      sioyek
+      nushell
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -105,6 +106,11 @@
         enable = true;
         plugins = [ "git" ];
       };
+    };
+
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
   };
 
