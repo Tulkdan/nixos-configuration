@@ -33,9 +33,8 @@
             useUserPackages = true;
             users.pedro = import ./home {
               config = self;
-              pkgs = pkgs;
               username = users.pedro.username;
-              stateVersion = stateVersion;
+              inherit stateVersion pkgs;
             };
           };
         }
