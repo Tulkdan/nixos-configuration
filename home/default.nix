@@ -30,10 +30,7 @@
   home.packages = with pkgs; [
       nodejs
       ghc
-      bibata-cursors
 
-      gnomeExtensions.paperwm
-      gnome.gnome-tweaks
       just
 
       eww-wayland
