@@ -12,6 +12,7 @@
     ./git
     ./gtk
     ./firefox
+    ./keyboard
     ./neovim
     ./vscode
   ];
