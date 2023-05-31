@@ -1,20 +1,23 @@
 { pkgs, ... }:
-{
 
+{
   home.packages = with pkgs; [
+
     bibata-cursors
 
     gnomeExtensions.appindicator
     gnomeExtensions.paperwm
     gnomeExtensions.dash-to-dock
-    gnome.gnome-tweaks
 
     adw-gtk3
+
   ];
 
   dconf = {
     enable = true;
+
     settings = {
+
       "org/gnome/shell" = {
         enable-extensions = [
           "paperwm@hedning:matrix.org"
@@ -28,6 +31,7 @@
         font-name = "Fira Code 11";
         cursor-theme = "Bibata-Modern-Classic";
       };
+
     };
   };
 }

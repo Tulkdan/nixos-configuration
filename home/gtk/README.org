@@ -1,0 +1,81 @@
+* GTk Configuration
+#+PROPERTY: header-args :tangle default.nix
+
+#+begin_src nix
+  { pkgs, ... }:
+#+end_src
+
+** Installing packages
+#+begin_src nix
+  {
+    home.packages = with pkgs; [
+#+end_src
+
+*** Cursor theme
+I'm using [[https://github.com/ful1e5/Bibata_Cursor][Bibata cursor]]
+#+begin_src nix
+    bibata-cursors
+#+end_src
+
+*** Gnome extensions
+
+appIndicator, because why not?
+
+[[https://github.com/paperwm/PaperWM][PaperWM]] as a tiled window manager, because I don't want to config a bar for a tiling window manager
+(and because I like the bar for gnome).
+
+[[https://github.com/micheleg/dash-to-dock][Dash to dock]]: obligatory extension to be used with gnome
+#+begin_src nix
+    gnomeExtensions.appindicator
+    gnomeExtensions.paperwm
+    gnomeExtensions.dash-to-dock
+#+end_src
+
+*** Theme
+
+[[https://github.com/lassekongo83/adw-gtk3][libadwaita ported to GTK-3]]
+#+begin_src nix
+    adw-gtk3
+#+end_src
+
+#+begin_src nix
+];
+#+end_src
+
+
+** Dconf to enable configuration for gnome
+
+To get your =dconf= configuration, just run ~dconf dump /org/gnome/~
+
+#+begin_src nix
+  dconf = {
+    enable = true;
+
+    settings = {
+#+end_src
+
+*** Enable gnome extensions
+#+begin_src nix
+  "org/gnome/shell" = {
+    enable-extensions = [
+      "paperwm@hedning:matrix.org"
+      "appindicatorsupport@rgcjonas.gmail.com"
+      "dash-to-dock@micxgx.gmail.com"
+    ];
+  };
+#+end_src
+
+*** Setting gnome theme
+#+begin_src nix
+  "org/gnome/desktop/interface" = {
+    gtk-theme = "adw-gtk3";
+    font-name = "Fira Code 11";
+    cursor-theme = "Bibata-Modern-Classic";
+  };
+#+end_src
+
+#+begin_src nix
+    };
+  };
+}
+#+end_src
