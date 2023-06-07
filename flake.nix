@@ -9,36 +9,37 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: let
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
     stateVersion = "22.11";
     pkgs = import nixpkgs {inherit system;};
     users = {
       pedro = {
-	      username = "pedro";
+              username = "pedro";
       };
     };
   in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-      inherit system;
+    nixosConfigurations = {
+      ${hostname} = nixpkgs.lib.nixosSystem {
+        inherit system;
     
-      modules = [
-        ./hosts/desktop
-    
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            users.pedro = import ./home {
-              config = self;
-              username = users.pedro.username;
-              inherit stateVersion pkgs;
-            };
-          };
-        }
-      ];
+        modules = [
+          ./hosts/desktop
+        ];
+      };
+    };
+    homeConfigurations = {
+      pedro = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit stateVersion;
+          username = users.pedro.username;
+        };
+        modules = [
+          ./home
+        ];
+      };
     };
   };
 }

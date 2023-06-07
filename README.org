@@ -10,15 +10,15 @@
       <<inputs>>
     };
 
-    outputs = { self, nixpkgs, home-manager, ... }: let
+    outputs = { self, nixpkgs, home-manager, ... }@inputs: let
       system = "x86_64-linux";
       hostname = "nixos";
       stateVersion = "22.11";
       pkgs = import nixpkgs {inherit system;};
       users = {
-	pedro = {
-		username = "pedro";
-	};
+        pedro = {
+                username = "pedro";
+        };
       };
     in {
       <<outputs>>
@@ -58,25 +58,30 @@
 
 *** NixOS System
 #+begin_src nix
-  nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
-    inherit system;
+  nixosConfigurations = {
+    ${hostname} = nixpkgs.lib.nixosSystem {
+      inherit system;
 
-    modules = [
-      ./hosts/desktop
+      modules = [
+        ./hosts/desktop
+      ];
+    };
+  };
+#+end_src
 
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useGlobalPkgs = true;
-          useUserPackages = true;
-          users.pedro = import ./home {
-            config = self;
-            username = users.pedro.username;
-            inherit stateVersion pkgs;
-          };
-        };
-      }
-    ];
+*** Home Manager
+#+begin_src nix
+  homeConfigurations = {
+    pedro = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit stateVersion;
+        username = users.pedro.username;
+      };
+      modules = [
+        ./home
+      ];
+    };
   };
 #+end_src
 
