@@ -17,7 +17,10 @@
       pkgs = import nixpkgs {inherit system;};
       users = {
         pedro = {
-                username = "pedro";
+          username = "pedro";
+        };
+        work = {
+          username = "pedro-correa";
         };
       };
     in {
@@ -70,6 +73,8 @@
 #+end_src
 
 *** Home Manager
+
+**** Personal
 #+begin_src nix
   homeConfigurations = {
     pedro = home-manager.lib.homeManagerConfiguration {
@@ -85,3 +90,30 @@
   };
 #+end_src
 
+**** Work
+#+begin_src nix
+  homeConfigurations = {
+    work = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      modules = [{
+        # Home Manager needs a bit of information about you and the paths it should
+        # manage.
+        home.username = users.workusername;
+        home.homeDirectory = "/home/${users.work.username}";
+
+        home.stateVersion = stateVersion; # Please read the comment before changing.
+
+        programs = {
+          home-manager.enable = true;
+        };
+
+        imports = [
+          ./alacritty
+          ./emacs
+          ./neovim
+          ./vscode
+        ];
+      }];
+    };
+  };
+#+end_src
