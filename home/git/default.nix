@@ -7,7 +7,7 @@
       key = "2748A6200C9EE0B4";
       signByDefault = true;
     };
-    ignores = [ "*~" "*.swp" ];
+    ignores = ["*~" "*.swp"];
     extraConfig = {
       commit.template = "~/.config/git/message";
     };

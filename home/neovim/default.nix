@@ -5,9 +5,9 @@
     ".vimrc".source = ./vimrc;
 
     ".config/nvim/init.vim".text = ''
-    set runtimepath^=~/.vim runtimepath+=~/.vim/after
-    let &packpath = &runtimepath
-    source ~/.vimrc
+      set runtimepath^=~/.vim runtimepath+=~/.vim/after
+      let &packpath = &runtimepath
+      source ~/.vimrc
     '';
 
     ".config/vim/ale.vim".source = ./config/ale.vim;
@@ -31,5 +31,4 @@
     ".vim/.skeleton.tex".source = ./skeletons/.skeleton.tex;
     ".vim/.skeleton.vue.test".source = ./skeletons/.skeleton.vue.test;
   };
-  
 }

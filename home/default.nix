@@ -1,6 +1,10 @@
-{ config, pkgs, username, stateVersion, ... }:
-
 {
+  config,
+  pkgs,
+  username,
+  stateVersion,
+  ...
+}: {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = username;
@@ -29,17 +33,17 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [
-      nodejs
-      ghc
+    nodejs
+    ghc
 
-      just
+    just
 
-      eww-wayland
-      ripgrep
-      jq
+    eww-wayland
+    ripgrep
+    jq
 
-      sioyek
-      nushell
+    sioyek
+    nushell
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -103,7 +107,7 @@
       dotDir = ".config/zsh";
       oh-my-zsh = {
         enable = true;
-        plugins = [ "git" ];
+        plugins = ["git"];
       };
     };
 

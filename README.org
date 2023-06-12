@@ -59,6 +59,11 @@
 :header-args: :noweb-ref outputs
 :END:
 
+*** Formatter
+#+begin_src nix
+    formatter.x86_64-linux = pkgs.alejandra;
+#+end_src
+
 *** NixOS System
 #+begin_src nix
   nixosConfigurations = {

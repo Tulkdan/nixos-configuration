@@ -9,7 +9,12 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: let
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
     stateVersion = "22.11";
@@ -23,10 +28,11 @@
       };
     };
   in {
+    formatter.x86_64-linux = pkgs.alejandra;
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-    
+
         modules = [
           ./hosts/desktop
         ];
