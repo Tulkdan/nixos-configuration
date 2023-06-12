@@ -98,7 +98,7 @@
       modules = [{
         # Home Manager needs a bit of information about you and the paths it should
         # manage.
-        home.username = users.workusername;
+        home.username = users.work.username;
         home.homeDirectory = "/home/${users.work.username}";
 
         home.stateVersion = stateVersion; # Please read the comment before changing.
@@ -108,10 +108,10 @@
         };
 
         imports = [
-          ./alacritty
-          ./emacs
-          ./neovim
-          ./vscode
+          ./home/alacritty
+          ./home/emacs
+          ./home/neovim
+          ./home/vscode
         ];
       }];
     };
