@@ -356,6 +356,13 @@ Forcing emacs to get all the env var from my machine
     (direnv-mode))
 #+end_src
 
+** Git Gutter
+#+begin_src emacs-lisp
+  (use-package git-gutter
+    :config
+    (global-git-gutter-mode +1))
+#+end_src
+
 ** Languages
 *** Web
 #+begin_src emacs-lisp
