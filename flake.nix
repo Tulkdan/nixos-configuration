@@ -62,6 +62,10 @@
 
             home.stateVersion = stateVersion; # Please read the comment before changing.
 
+            home.packages = with pkgs; [
+              sioyek
+            ];
+
             programs = {
               home-manager.enable = true;
             };
@@ -69,8 +73,8 @@
             imports = [
               # ./home/alacritty
               ./home/emacs
-              # ./home/neovim
-              # ./home/vscode
+              ./home/neovim
+              ./home/vscode
             ];
           }
         ];
