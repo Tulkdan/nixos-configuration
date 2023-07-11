@@ -17,8 +17,10 @@
   } @ inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
-    stateVersion = "22.11";
-    pkgs = import nixpkgs {inherit system;};
+    stateVersion = "23.05";
+    pkgs = import nixpkgs {
+      inherit system;
+    };
     users = {
       pedro = {
         username = "pedro";
