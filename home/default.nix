@@ -36,6 +36,7 @@
   home.packages = with pkgs; [
     nodejs
     ghc
+    thunderbird
 
     just
 
