@@ -34,6 +34,51 @@
         }
       ];
 
+      search.engines = {
+        "Nix Packages" = {
+          urls = [
+            {
+              template = "https://search.nixos.org/packages";
+              params = [
+                {
+                  name = "type";
+                  value = "packages";
+                }
+                {
+                  name = "channel";
+                  value = "unstable";
+                }
+                {
+                  name = "query";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+
+          icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+          definedAliases = ["@np"];
+        };
+
+        "NPM" = {
+          urls = [
+            {
+              template = "https://www.npmjs.com/search";
+              params = [
+                {
+                  name = "q";
+                  value = "{searchTerms}";
+                }
+              ];
+            }
+          ];
+
+          definedAliases = ["@npm"];
+        };
+
+        "Google".metaData.alias = "@g";
+      };
+
       userChrome = ''
         /*===KeyFox by AlfarexGuy2019===*/
 
