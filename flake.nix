@@ -64,6 +64,7 @@
 
             home.packages = with pkgs; [
               sioyek
+              jq
             ];
 
             programs = {

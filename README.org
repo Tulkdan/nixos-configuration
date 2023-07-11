@@ -108,6 +108,11 @@
 
         home.stateVersion = stateVersion; # Please read the comment before changing.
 
+        home.packages = with pkgs; [
+          sioyek
+          jq
+        ];
+
         programs = {
           home-manager.enable = true;
         };
