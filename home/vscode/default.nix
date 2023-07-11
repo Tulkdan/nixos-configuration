@@ -23,6 +23,7 @@
       "editor.renderWhitespace" = "trailing";
       "editor.cursorStyle" = "underline";
       "editor.lineNumbers" = "relative";
+      "editor.wordWrap" = "on";
     };
   };
 }
