@@ -49,37 +49,20 @@
         };
         modules = [
           ./home
+          ./home/personal.nix
         ];
       };
     };
     homeConfigurations = {
       work = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        extraSpecialArgs = {
+          inherit stateVersion;
+          username = users.work.username;
+        };
         modules = [
-          {
-            # Home Manager needs a bit of information about you and the paths it should
-            # manage.
-            home.username = users.work.username;
-            home.homeDirectory = "/home/${users.work.username}";
-
-            home.stateVersion = stateVersion; # Please read the comment before changing.
-
-            home.packages = with pkgs; [
-              sioyek
-              jq
-            ];
-
-            programs = {
-              home-manager.enable = true;
-            };
-
-            imports = [
-              # ./home/alacritty
-              ./home/emacs
-              ./home/neovim
-              ./home/vscode
-            ];
-          }
+          ./home
+          ./home/work.nix
         ];
       };
     };
