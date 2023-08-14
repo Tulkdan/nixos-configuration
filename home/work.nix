@@ -6,8 +6,8 @@
   ...
 }: {
   home.packages = with pkgs; [
-    dbeaver
     pass
+    wl-clipboard
   ];
 
   programs.git = {
