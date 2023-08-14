@@ -418,6 +418,11 @@ Forcing emacs to get all the env var from my machine
     :mode "\\.nix\\'")
 #+end_src
 
+*** Mermaid
+#+begin_src emacs-lisp
+  (use-package ob-mermaid)
+#+end_src
+
 ** DevOps
 *** Kubernetes
 Enables plugin to we can use kubectl inside of emacs
@@ -591,6 +596,7 @@ Install package to be compatible with evil mode
      (org-babel-do-load-languages
       'org-babel-load-languages
       '((haskell . t)
+        (mermaid . t)
         (emacs-lisp . t)))
   #+end_src
 

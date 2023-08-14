@@ -8,6 +8,7 @@
   home.packages = with pkgs; [
     pass
     wl-clipboard
+    nodePackages.mermaid-cli
   ];
 
   programs.git = {
