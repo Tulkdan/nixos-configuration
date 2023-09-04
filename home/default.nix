@@ -41,7 +41,7 @@
     # Enabling zsh
     zsh = {
       enable = true;
-      enableSyntaxHighlighting = true;
+      syntaxHighlighting.enable = true;
       dotDir = ".config/zsh";
       oh-my-zsh = {
         enable = true;
