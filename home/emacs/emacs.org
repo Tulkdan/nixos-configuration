@@ -640,6 +640,33 @@ Install package to be compatible with evil mode
      (emacs-lisp . t)))
   #+end_src
 
+** Presentation
+Using org-tree-slide to turn org files into a prensentation
+
+But first, let's intall hide-mode-line to hide the modeline when presenting
+#+begin_src emacs-lisp
+  (use-package hide-mode-line)
+#+end_src
+
+#+begin_src emacs-lisp
+  (defun tulkdan/presentation-setup ()
+    (hide-mode-line-mode 1)
+    (org-display-inline-images 1)
+    (setq text-scale-mode-amount 2)
+    (text-scale-mode 1))
+
+  (defun tulkdan/presentation-end ()
+    (hide-mode-line-mode 0)
+    (org-display-inline-images 0)
+    (text-scale-mode 0))
+
+  (use-package org-tree-slide
+    :hook ((org-tree-slide-play . tulkdan/presentation-setup)
+           (org-tree-slide-stop . tulkdan/presentation-end))
+    :custom
+    (org-image-actual-width nil))
+#+end_src
+
 * Managing Mail with mu4e
 
 #+begin_src emacs-lisp
