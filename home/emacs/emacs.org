@@ -637,6 +637,7 @@ Install package to be compatible with evil mode
    '((haskell . t)
      (mermaid . t)
      (kotlin . t)
+     (js . t)
      (emacs-lisp . t)))
   #+end_src
 
