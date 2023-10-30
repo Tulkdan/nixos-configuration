@@ -668,6 +668,12 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
     (org-image-actual-width nil))
 #+end_src
 
+** Denote
+
+#+begin_src emacs-lisp
+  (use-package denote)
+#+end_src
+
 * Managing Mail with mu4e
 
 #+begin_src emacs-lisp
