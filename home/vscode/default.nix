@@ -11,6 +11,7 @@
       esbenp.prettier-vscode
       dbaeumer.vscode-eslint
       vscodevim.vim
+      denoland.vscode-deno
     ];
 
     userSettings = {
