@@ -27,7 +27,6 @@
   ];
 
   home.sessionVariables = {
-    VISUAL = "emacs";
     BROWSER = "firefox";
   };
 
