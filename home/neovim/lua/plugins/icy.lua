@@ -1,0 +1,3 @@
+return {
+  'elianiva/icy.nvim'
+}
