@@ -44,10 +44,14 @@
     ".config/nvim/lua/user/settings.lua".source = ./lua/user/settings.lua;
 
     ".config/nvim/lua/plugins/editorconfig.lua".source = ./lua/plugins/editorconfig.lua;
+    ".config/nvim/lua/plugins/icy.lua".source = ./lua/plugins/icy.lua;
+    ".config/nvim/lua/plugins/lsp-zero.lua".source = ./lua/plugins/lsp-zero.lua;
     ".config/nvim/lua/plugins/lualine.lua".source = ./lua/plugins/lualine.lua;
+    ".config/nvim/lua/plugins/mason.lua".source = ./lua/plugins/mason.lua;
+    ".config/nvim/lua/plugins/nvim-cmp.lua".source = ./lua/plugins/nvim-cmp.lua;
+    ".config/nvim/lua/plugins/nvim-lspconfig.lua".source = ./lua/plugins/nvim-lspconfig.lua;
     ".config/nvim/lua/plugins/telescope.lua".source = ./lua/plugins/telescope.lua;
     ".config/nvim/lua/plugins/tokyonight.lua".source = ./lua/plugins/tokyonight.lua;
-    ".config/nvim/lua/plugins/icy.lua".source = ./lua/plugins/icy.lua;
     ".config/nvim/lua/plugins/treesitter.lua".source = ./lua/plugins/treesitter.lua;
     ".config/nvim/lua/plugins/vim-fugitive.lua".source = ./lua/plugins/vim-fugitive.lua;
 
