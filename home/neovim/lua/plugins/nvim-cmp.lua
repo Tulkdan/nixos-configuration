@@ -16,10 +16,20 @@ return {
         formatting = lsp_zero.cmp_format(),
         mapping = cmp.mapping.preset.insert({
             ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-            ['<C-d>'] = cmp.mapping.scroll_docs(4),
-            ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-            ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+            ['<CR>'] = function(fallback)
+              if cmp.visible() then
+                cmp.confirm()
+              else
+                fallback()
+              end
+            end,
+            ['<Tab>'] = function(fallback)
+              if cmp.visible() then
+                cmp.select_next_item()
+              else
+                fallback()
+              end
+            end
         })
     })
   end
