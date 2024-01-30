@@ -1,6 +1,7 @@
 return {
   'nvim-treesitter/nvim-treesitter.nvim',
   build = ":TSUpdate",
+  url = 'git@github.com:nvim-treesitter/nvim-treesitter.git',
   config = function ()
     local configs = require('nvim-treesitter.configs')
 
