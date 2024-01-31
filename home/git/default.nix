@@ -6,6 +6,14 @@
     extraConfig = {
       commit.template = "~/.config/git/message";
     };
+
+    delta = {
+      enable = true;
+      options = {
+        navigate = true;
+        line-numbers = true;
+      };
+    };
   };
 
   home.file.".config/git/message".source = ./message;

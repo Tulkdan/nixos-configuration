@@ -24,6 +24,7 @@
     ripgrep
     jq
     sioyek
+    delta
   ];
 
   home.sessionVariables = {

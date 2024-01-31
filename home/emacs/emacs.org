@@ -254,6 +254,11 @@ Smooth scrolling with pixel precision mode
        (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
    #+end_src
    
+*** Magit delta
+#+begin_src emacs-lisp
+  (use-package magit-delta
+    :hook (magit-mode . magit-delta-mode))
+#+end_src
 ** Projectile
 
    #+begin_src emacs-lisp
