@@ -25,9 +25,13 @@
     jq
     sioyek
     delta
+    zellij
+    lazydocker
   ];
 
   home.sessionVariables = {
+    EDITOR = "nvim";
+    VISUAL = "nvim";
     BROWSER = "firefox";
   };
 
