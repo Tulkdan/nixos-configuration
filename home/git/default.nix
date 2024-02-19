@@ -5,6 +5,10 @@
     ignores = ["*~" "*.swp"];
     extraConfig = {
       commit.template = "~/.config/git/message";
+      rerere = {
+        enable = true;
+        autoUpdate = true;
+      };
     };
 
     delta = {
