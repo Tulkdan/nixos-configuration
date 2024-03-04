@@ -356,6 +356,7 @@ Smooth scrolling with pixel precision mode
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
           (elixir-mode . elixir-ts-mode)
+          (go-mode . go-ts-mode)
           (python-mode . python-ts-mode)))
 #+end_src
 
@@ -493,6 +494,12 @@ Smooth scrolling with pixel precision mode
   (use-package ob-elixir)
 #+end_src
 
+*** Golang
+#+begin_src emacs-lisp
+  (use-package go-mode
+    :mode "\\.go\\'"
+    :hook (go-mode . lsp-deferred))
+#+end_src
 ** DevOps
 *** Kubernetes
 Enables plugin to we can use kubectl inside of emacs
