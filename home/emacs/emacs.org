@@ -137,14 +137,18 @@ Smooth scrolling with pixel precision mode
      (use-package all-the-icons
        :if (display-graphic-p))
    #+end_src
-
+   
 *** [[https://protesilaos.com/emacs/ef-themes][Ef Themes]]
 #+begin_src emacs-lisp
-  (use-package ef-themes
-    :config
-    (load-theme 'ef-tritanopia-dark t))
+  (use-package ef-themes)
 #+end_src
 
+*** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin]]
+#+begin_src emacs-lisp
+  (use-package kaolin-themes
+    :config
+    (load-theme 'kaolin-galaxy t))
+#+end_src
 ** Neotree
 #+begin_src emacs-lisp
   (use-package neotree
