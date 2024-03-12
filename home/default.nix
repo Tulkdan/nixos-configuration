@@ -27,6 +27,7 @@
     delta
     zellij
     lazydocker
+    gccgo
   ];
 
   home.sessionVariables = {
