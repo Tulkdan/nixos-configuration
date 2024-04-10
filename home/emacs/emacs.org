@@ -754,3 +754,10 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
                     ("https://github.com/readme.rss" tech dev))))
 #+end_src
 
+* Ledger
+#+begin_src emacs-lisp
+  (use-package ledger-mode
+    :hook
+    (ledger-mode . company-mode)
+    (ledger-mode . tulkdan/org-mode-visual-fill))
+#+end_src

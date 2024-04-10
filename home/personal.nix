@@ -16,6 +16,8 @@
     eww-wayland
     jetbrains.idea-community
     gnucash
+    ledger
+    hledger
   ];
 
   programs.git = {
