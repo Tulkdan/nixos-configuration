@@ -29,19 +29,6 @@
 
       cursor.style = "Underline";
 
-      key_bindings = [
-        {
-          key = "V";
-          mods = "Alt";
-          action = "Paste";
-        }
-        {
-          key = "C";
-          mods = "Alt";
-          action = "Copy";
-        }
-      ];
-
       colors = {
         primary = {
           background = "0x1D1F28";
