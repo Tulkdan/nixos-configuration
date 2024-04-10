@@ -97,6 +97,8 @@
 
   hardware.opengl.enable = true;
 
+  hardware.keyboard.qmk.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
@@ -114,7 +116,7 @@
   users.users.pedro = {
     isNormalUser = true;
     description = "Pedro";
-    extraGroups = ["networkmanager" "wheel" "tty" "docker"];
+    extraGroups = ["networkmanager" "wheel" "tty" "docker" "dialout"];
     shell = pkgs.zsh;
   };
 
