@@ -28,6 +28,7 @@
     zellij
     lazydocker
     gccgo
+    zed-editor
   ];
 
   home.sessionVariables = {
