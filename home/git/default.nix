@@ -15,7 +15,6 @@
       enable = true;
       options = {
         navigate = true;
-        line-numbers = true;
       };
     };
   };
