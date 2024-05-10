@@ -187,6 +187,7 @@
     material-design-icons
     fira-code
     hasklig
+    monaspace
   ];
 
   virtualisation.docker.enable = true;

@@ -19,7 +19,7 @@
       "workbench.colorTheme" = "Catppuccin Mocha";
       "workbench.iconTheme" = "catppuccin-mocha";
       "editor.minimap.enabled" = false;
-      "editor.fontFamily" = "'Hasklig','Droid Sans Mono', 'monospace', monospace";
+      "editor.fontFamily" = "'Monaspace Krypton', 'Hasklig','Droid Sans Mono', 'monospace', monospace";
       "editor.fontLigatures" = true;
       "editor.renderWhitespace" = "trailing";
       "editor.cursorStyle" = "underline";

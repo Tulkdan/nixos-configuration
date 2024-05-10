@@ -21,7 +21,7 @@
 
       font = {
         normal = {
-          family = "Fira Code";
+          family = "Monaspace Krypton";
         };
 
         size = 11.0;
