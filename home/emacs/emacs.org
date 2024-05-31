@@ -563,72 +563,76 @@ Install package to be compatible with evil mode
 ** Basic Configuration
 
     #+begin_src emacs-lisp
-  (defun tulkdan/org-mode-setup ()
-    (variable-pitch-mode 1)
-    (visual-line-mode 1))
+      (defun tulkdan/org-mode-setup ()
+        (variable-pitch-mode 1)
+        (visual-line-mode 1))
 
-  (use-package org
-    :pin org
-    :commands (org-capture org-agenda)
-    :hook (org-mode . tulkdan/org-mode-setup)
-    :config
-    (setq org-startup-indented t)
+      (defun tulkdan/org-mode-verb-setup ()
+        (define-key org-mode-map (kbd "C-c C-r") verb-command-map))
 
-    (setq org-ellipsis " ▾")
+      (use-package org
+        :pin org
+        :commands (org-capture org-agenda)
+        :hook (org-mode . tulkdan/org-mode-setup)
+        :config
+        (setq org-startup-indented t)
 
-    (setq org-log-done 'time)
-    (setq org-log-into-drawer t)
+        (setq org-ellipsis " ▾")
 
-    (setq org-agenda-file-regexp ".*\\.org$")
-    (setq org-agenda-files '("~/Documents/Tasks"))
+        (setq org-log-done 'time)
+        (setq org-log-into-drawer t)
 
-    (setq org-todo-keywords
-          '((sequence "BLOCKED(b@)" "PLAN(p)" "NEXT(n)" "WORKING(w)" "REVIEW(v)" "|" "DONE(d!)" "CANC(k@)")
-            (sequence "TODO(t)" "DOING(a)" "|" "COMPLETED(c!)" "CANCELED(C)")))
+        (setq org-agenda-file-regexp ".*\\.org$")
+        (setq org-agenda-files '("~/Documents/Tasks"))
 
-    (setq org-todo-keyword-faces
-          '(("BLOCKED" . "red") ))
+        (setq org-todo-keywords
+              '((sequence "BLOCKED(b@)" "PLAN(p)" "NEXT(n)" "WORKING(w)" "REVIEW(v)" "|" "DONE(d!)" "CANC(k@)")
+                (sequence "TODO(t)" "DOING(a)" "|" "COMPLETED(c!)" "CANCELED(C)")))
 
-    (setq org-refile-targets
-          '(("Archive.org" :maxlevel . 1)
-            ("Tasks.org" :maxlevel . 1)))
+        (setq org-todo-keyword-faces
+              '(("BLOCKED" . "red") ))
 
-    ;; Configure custom agenda views
-    (setq org-agenda-custom-commands
-          '(("d" "Dashboard"
-             ((agenda "" ((org-deadline-warning-days 7)))
-              (todo "NEXT"
-                    ((org-agenda-overriding-header "Next Tasks")))
-              (todo "WORKING"
-                    ((org-agenda-overriding-header "Active Projects")))
-              (todo "REVIEW"
-                    ((org-agenda-overriding-header "In Review")))))
+        (setq org-refile-targets
+              '(("Archive.org" :maxlevel . 1)
+                ("Tasks.org" :maxlevel . 1)))
 
-            ("w" "Workflow Status"
-             ((todo "BLOCKED"
-                    ((org-agenda-overriding-header "Blocked on External")
-                     (org-agenda-files org-agenda-files)))
-              (todo "PLAN"
-                    ((org-agenda-overriding-header "In Planning")
-                     (org-agenda-todo-list-sublevels nil)
-                     (org-agenda-files org-agenda-files)))
-              (todo "REVIEW"
-                    ((org-agenda-overriding-header "In Review")
-                     (org-agenda-files org-agenda-files)))
-              (todo "WORKING"
-                    ((org-agenda-overriding-header "Active Projects")
-                     (org-agenda-files org-agenda-files)))
-              (todo "DONE"
-                    ((org-agenda-overriding-header "Completed Projects")
-                     (org-agenda-files org-agenda-files)))
-              (todo "CANC"
-                    ((org-agenda-overriding-header "Cancelled Projects")
-                     (org-agenda-files org-agenda-files)))))))
+        ;; Configure custom agenda views
+        (setq org-agenda-custom-commands
+              '(("d" "Dashboard"
+                 ((agenda "" ((org-deadline-warning-days 7)))
+                  (todo "NEXT"
+                        ((org-agenda-overriding-header "Next Tasks")))
+                  (todo "WORKING"
+                        ((org-agenda-overriding-header "Active Projects")))
+                  (todo "REVIEW"
+                        ((org-agenda-overriding-header "In Review")))))
 
-    (setq org-link-abbrev-alist
-          '(("clickup" . "https://app.clickup.com/t/")))
+                ("w" "Workflow Status"
+                 ((todo "BLOCKED"
+                        ((org-agenda-overriding-header "Blocked on External")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "PLAN"
+                        ((org-agenda-overriding-header "In Planning")
+                         (org-agenda-todo-list-sublevels nil)
+                         (org-agenda-files org-agenda-files)))
+                  (todo "REVIEW"
+                        ((org-agenda-overriding-header "In Review")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "WORKING"
+                        ((org-agenda-overriding-header "Active Projects")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "DONE"
+                        ((org-agenda-overriding-header "Completed Projects")
+                         (org-agenda-files org-agenda-files)))
+                  (todo "CANC"
+                        ((org-agenda-overriding-header "Cancelled Projects")
+                         (org-agenda-files org-agenda-files)))))))
 
-    (tulkdan/org-font-setup))
+        (setq org-link-abbrev-alist
+              '(("clickup" . "https://app.clickup.com/t/")))
+
+        (tulkdan/org-font-setup)
+        (tulkdan/org-mode-verb-setup))
    #+end_src
 
 ** Nicer Heading Bullets
@@ -736,6 +740,13 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
                              "\n\n")))))
 #+end_src
 
+** Verb
+
+[[https://github.com/federicotdn/verb][Verb is a package for Emacs which allows you to organize and send HTTP requests.]]
+
+#+begin_src emacs-lisp
+  (use-package verb)
+#+end_src
 * Elfeed
 #+begin_src emacs-lisp
         (use-package elfeed
