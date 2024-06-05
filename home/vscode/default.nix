@@ -12,6 +12,7 @@
       dbaeumer.vscode-eslint
       vscodevim.vim
       denoland.vscode-deno
+      gleam.gleam
     ];
 
     userSettings = {

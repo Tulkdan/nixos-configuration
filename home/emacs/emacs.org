@@ -501,6 +501,14 @@ Smooth scrolling with pixel precision mode
   (use-package ob-elixir)
 #+end_src
 
+*** Gleam
+
+#+begin_src emacs-lisp
+  (use-package gleam-ts-mode
+    :mode "\\.gleam\\'"
+    :load-path "~/.emacs.d/gleam-mode")
+#+end_src
+
 *** Golang
 #+begin_src emacs-lisp
   (use-package go-mode
