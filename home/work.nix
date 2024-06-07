@@ -9,6 +9,8 @@
     pass
     wl-clipboard
     nodePackages.mermaid-cli
+    davmail
+    d2
   ];
 
   programs.git = {
