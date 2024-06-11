@@ -289,22 +289,23 @@ Smooth scrolling with pixel precision mode
 
 ** LSP
    #+begin_src emacs-lisp
-     (use-package lsp-mode
-       :ensure nil
-       :commands (lsp lsp-deferred)
-       :init
-       (setq lsp-keymap-prefix "C-c l")
-       :custom
-       (lsp-rust-analyzer-cargo-watch-command "clippy")
-       (lsp-rust-analyzer-server-display-inlay-hints t)
-       (lsp-eldoc-render-all t)
-       :config
-       (lsp-enable-which-key-integration t)
-       :hook
-       (typescript-mode . lsp-deferred) ;; auto activating lsp when typescript mode is active
-       (haskell-mode . lsp-deferred)
-       (kotlin-mode . lsp-deferred)
-       (haskell-literate-mode . lsp-deferred))
+        (use-package lsp-mode
+          :ensure nil
+          :commands (lsp lsp-deferred)
+          :init
+          (setq lsp-keymap-prefix "C-c l")
+          :custom
+          (lsp-rust-analyzer-cargo-watch-command "clippy")
+          (lsp-rust-analyzer-server-display-inlay-hints t)
+          (lsp-eldoc-render-all t)
+          :config
+          (lsp-enable-which-key-integration t)
+          :hook
+          (typescript-mode . lsp-deferred) ;; auto activating lsp when typescript mode is active
+          (haskell-mode . lsp-deferred)
+          (kotlin-mode . lsp-dferred)
+          (gleam-ts-mode . lsp-deferred)
+          (haskell-literate-mode . lsp-deferred))
     #+end_src
     
 *** lsp-ui
@@ -398,6 +399,7 @@ Smooth scrolling with pixel precision mode
          (kotlin-mode . eglot-ensure)
          (elixir-ts-mode . eglot-ensure)
          (deno-ts-mode . eglot-ensure)
+         (gleam-ts-mode . eglot-ensure)
          :ensure nil)
     #+end_src
 
