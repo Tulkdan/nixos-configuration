@@ -465,13 +465,6 @@ Smooth scrolling with pixel precision mode
     :mode "\\.yuck\\'")
 #+end_src
 
-*** Flutter
-#+begin_src emacs-lisp
-  (use-package dart-mode)
-  (use-package lsp-dart
-    :hook (dart-mode . lsp-deferred))
-#+end_src
-
 *** Nix
 #+begin_src emacs-lisp
   (use-package nix-mode
