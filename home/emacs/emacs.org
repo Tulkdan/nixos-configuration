@@ -782,3 +782,11 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
     (ledger-mode . company-mode)
     (ledger-mode . tulkdan/org-mode-visual-fill))
 #+end_src
+
+* Exercism 
+
+[[https://exercism.org/dashboard][It's a tool to practice or learning a programming language]]
+
+#+begin_src emacs-lisp
+  (use-package exercism)
+#+end_src
