@@ -13,6 +13,7 @@
       vscodevim.vim
       denoland.vscode-deno
       gleam.gleam
+      yoavbls.pretty-ts-errors
     ];
 
     userSettings = {
