@@ -4,7 +4,6 @@
   ...
 }: {
   imports = [
-    ./anytype
     ./firefox
     ./keyboard
   ];
