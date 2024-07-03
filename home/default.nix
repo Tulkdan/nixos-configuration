@@ -17,6 +17,8 @@
     ./gtk
     ./neovim
     ./vscode
+    ./niri
+    ./waybar
   ];
 
   home.packages = with pkgs; [
