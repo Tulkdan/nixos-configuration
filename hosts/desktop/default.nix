@@ -4,7 +4,6 @@
 {
   config,
   pkgs,
-  fetchFromGithub,
   ...
 }: {
   imports = [
@@ -59,8 +58,10 @@
       desktopManager.gnome.enable = true;
 
       # Configure keymap in X11
-      layout = "us";
-      xkbVariant = "";
+      xkb = {
+        layout = "us";
+        variant = "";
+      };
 
       updateDbusEnvironment = true;
     };
@@ -95,7 +96,7 @@
   hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
 
-  hardware.opengl.enable = true;
+  hardware.graphics.enable = true;
 
   hardware.keyboard.qmk.enable = true;
 
@@ -110,6 +111,8 @@
     };
 
     zsh.enable = true;
+
+    niri.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -170,8 +173,6 @@
   # Automatic GB
   nix = {
     settings = {
-      substituters = ["https://hyprland.cachix.org"];
-      trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
       experimental-features = ["nix-command" "flakes"];
     };
 
@@ -183,7 +184,7 @@
   };
 
   # Installing fonts
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     material-design-icons
     fira-code
     hasklig

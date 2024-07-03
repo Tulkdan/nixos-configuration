@@ -13,7 +13,6 @@
   # environment.
   home.packages = with pkgs; [
     ghc
-    eww-wayland
     jetbrains.idea-community
     gnucash
     ledger
