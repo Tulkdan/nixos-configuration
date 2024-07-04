@@ -109,6 +109,11 @@ Smooth scrolling with pixel precision mode
                          :weight 'normal
                          :width 'normal)
 
+     (prefer-coding-system 'utf-8)
+     (set-default-coding-systems 'utf-8)
+     (set-language-environment 'utf-8)
+     (set-selection-coding-system 'utf-8)
+
      (use-package hasklig-mode
        :hook (haskell-mode prog-mode))
    #+end_src
