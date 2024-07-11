@@ -31,6 +31,7 @@
     lazydocker
     gccgo
     hurl
+    zed-editor
   ];
 
   home.sessionVariables = {
