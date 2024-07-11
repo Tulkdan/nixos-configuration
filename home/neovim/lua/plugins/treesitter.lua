@@ -13,7 +13,8 @@ return {
           'javascript',
           'typescript',
           'tsx',
-          'json'
+          'json',
+          'gleam'
         },
         sync_install = false
     })
