@@ -45,7 +45,10 @@
 
     gpg.enable = true;
 
-    starship.enable = true;
+    starship = {
+      enable = true;
+      enableZshIntegration = true;
+    };
 
     # Enabling zsh
     zsh = {
@@ -54,7 +57,7 @@
       dotDir = ".config/zsh";
       oh-my-zsh = {
         enable = true;
-        plugins = ["git"];
+        plugins = ["git" "pass" "kubectl"];
       };
     };
 
