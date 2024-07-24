@@ -32,6 +32,7 @@
     gccgo
     hurl
     zed-editor
+    kubectl
   ];
 
   home.sessionVariables = {
