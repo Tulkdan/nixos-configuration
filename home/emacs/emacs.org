@@ -778,10 +778,18 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
     (ledger-mode . tulkdan/org-mode-visual-fill))
 #+end_src
 
-* Exercism 
-
+* Exercism
 [[https://exercism.org/dashboard][It's a tool to practice or learning a programming language]]
 
 #+begin_src emacs-lisp
   (use-package exercism)
+#+end_src
+
+* Wakatime
+[[https://wakatime.com/][Opens source plugin to get metrics about programming in text editors]]
+
+#+begin_src emacs-lisp
+  (use-package wakatime-mode
+    :ensure t
+    :init (global-wakatime-mode))
 #+end_src
