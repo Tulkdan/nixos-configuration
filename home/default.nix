@@ -23,6 +23,7 @@
 
   home.packages = with pkgs; [
     pass
+    tomb
     nodejs
     ripgrep
     jq
