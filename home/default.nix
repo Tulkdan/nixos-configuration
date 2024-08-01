@@ -35,6 +35,7 @@
     hurl
     zed-editor
     kubectl
+    foliate
   ];
 
   home.sessionVariables = {
