@@ -8,15 +8,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     niri.url = "github:sodiboo/niri-flake";
+    ags.url = "github:Aylur/ags";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    niri,
-    ...
-  } @ inputs: let
+  outputs = { self, nixpkgs, home-manager, niri, ... }@inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
     stateVersion = "23.11";
@@ -60,7 +55,7 @@
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
-
+    
         modules =
           shared-modules
           ++ [
@@ -73,6 +68,7 @@
         inherit pkgs;
         extraSpecialArgs = {
           inherit stateVersion;
+          inherit inputs;
           username = users.pedro.username;
         };
         modules = [

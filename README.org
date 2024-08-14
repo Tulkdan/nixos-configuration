@@ -84,6 +84,12 @@
 #+begin_src nix
   niri.url = "github:sodiboo/niri-flake";
 #+end_src
+
+*** AGR
+#+begin_src nix
+  ags.url = "github:Aylur/ags";
+#+end_src
+
 ** Outputs
 :PROPERTIES:
 :header-args: :noweb-ref outputs
@@ -113,19 +119,20 @@
 
 **** Personal
 #+begin_src nix
-  homeConfigurations = {
-    pedro = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit stateVersion;
-        username = users.pedro.username;
+    homeConfigurations = {
+      pedro = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = {
+          inherit stateVersion;
+          inherit inputs;
+          username = users.pedro.username;
+        };
+        modules = [
+          ./home
+          ./home/personal.nix
+        ];
       };
-      modules = [
-        ./home
-        ./home/personal.nix
-      ];
     };
-  };
 #+end_src
 
 **** Work
