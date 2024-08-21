@@ -23,16 +23,20 @@
   ];
 
   home.packages = with pkgs; [
-    pass
-    tomb
+    # Languages
     nodejs
+    gccgo
+
+    # Utilities
     ripgrep
     jq
-    sioyek
     delta
     zellij
-    lazydocker
-    gccgo
+    just
+
+    # Tools
+    pass
+    tomb
     hurl
     zed-editor
     kubectl
