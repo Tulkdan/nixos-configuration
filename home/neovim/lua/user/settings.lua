@@ -11,6 +11,8 @@ local opt = {
   foldmethod = 'indent',
   foldlevel = 5,
   showmatch = true,
+  list = true,
+  listchars = { tab = '> ', trail = '-' , nbsp = '+' , space = '.' },
 }
 
 for k, v in pairs(opt) do
