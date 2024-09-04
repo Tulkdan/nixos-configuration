@@ -33,6 +33,7 @@
 
     # Tools
     pass
+    gopass
     tomb
     hurl
     zed-editor
