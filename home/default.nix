@@ -22,7 +22,7 @@
   home.packages = with pkgs; [
     # Languages
     nodejs
-    gccgo
+    go
 
     # Utilities
     ripgrep
