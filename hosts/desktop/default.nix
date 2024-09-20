@@ -89,6 +89,9 @@
 
     # Adding support for flatpak
     flatpak.enable = true;
+
+    # Enable VPN
+    tailscale.enable = true;
   };
 
   # Enable sound with pipewire.
