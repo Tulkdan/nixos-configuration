@@ -10,7 +10,6 @@
     nodePackages.mermaid-cli
     davmail
     d2
-    httptoolkit
   ];
 
   programs.git = {
