@@ -731,18 +731,7 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
   (use-package denote
     :config
     (setq denote-templates
-          '((brag . ,(concat "* Objetivos dessa semana"
-                             "\n\n"
-                             "* Projetos"
-                             "\n\n"
-                             "* Colaboracao e mentoria"
-                             "\n\n"
-                             "* Documentacao"
-                             "\n\n"
-                             "* O que aprendi"
-                             "\n\n"
-                             "* Fora do trabalho"
-                             "\n\n")))))
+          '((brag . "* Objetivos dessa semana\n\n* Projetos\n\n* Colaboracao e mentoria\n\n* Documentacao\n\n* O que aprendi\n\n* Fora do trabalho\n\n"))))
 #+end_src
 
 ** Verb
