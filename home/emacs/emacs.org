@@ -139,11 +139,6 @@ Smooth scrolling with pixel precision mode
      (use-package all-the-icons
        :if (display-graphic-p))
    #+end_src
-   
-*** [[https://protesilaos.com/emacs/ef-themes][Ef Themes]]
-#+begin_src emacs-lisp
-  (use-package ef-themes)
-#+end_src
 
 *** [[https://github.com/ogdenwebb/emacs-kaolin-themes][Kaolin]]
 #+begin_src emacs-lisp
