@@ -12,8 +12,6 @@
   # environment.
   home.packages = with pkgs; [
     ghc
-    jetbrains.idea-community
-    gnucash
     ledger
     hledger
   ];
