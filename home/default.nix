@@ -23,6 +23,7 @@
     # Languages
     nodejs
     go
+    sqlc
 
     # Utilities
     ripgrep
