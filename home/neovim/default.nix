@@ -35,7 +35,7 @@
 
       lazy.setup("plugins")
 
-      vim.cmd.colorscheme('icy')
+      vim.cmd.colorscheme('jellybeans-nvim')
     '';
   };
 

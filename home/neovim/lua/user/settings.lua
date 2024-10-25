@@ -13,6 +13,7 @@ local opt = {
   showmatch = true,
   list = true,
   listchars = { tab = '> ', trail = '-' , nbsp = '+' , space = '.' },
+  cursorline = true,
 }
 
 for k, v in pairs(opt) do
