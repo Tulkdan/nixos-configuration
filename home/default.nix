@@ -40,6 +40,7 @@
     zed-editor
     kubectl
     foliate
+    zotero
   ];
 
   home.sessionVariables = {
