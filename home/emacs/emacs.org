@@ -146,6 +146,7 @@ Smooth scrolling with pixel precision mode
     :config
     (load-theme 'kaolin-galaxy t))
 #+end_src
+
 ** Neotree
 #+begin_src emacs-lisp
   (use-package neotree
@@ -264,6 +265,13 @@ Smooth scrolling with pixel precision mode
   (use-package magit-delta
     :hook (magit-mode . magit-delta-mode))
 #+end_src
+
+*** Magit Forge
+#+begin_src emacs-lisp
+  (use-package forge
+    :after magit)
+#+end_src
+
 ** Projectile
 
    #+begin_src emacs-lisp
