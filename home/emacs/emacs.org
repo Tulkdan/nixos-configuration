@@ -104,8 +104,8 @@ Smooth scrolling with pixel precision mode
 
    #+begin_src emacs-lisp
      (set-face-attribute 'default nil
-                         :family "Monaspace Krypton"
-                         :height 110
+                         :family "Departure Mono"
+                         :height 100
                          :weight 'normal
                          :width 'normal)
 

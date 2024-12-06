@@ -21,7 +21,7 @@
 
       font = {
         normal = {
-          family = "Monaspace Krypton";
+          family = "Departure Mono";
         };
 
         size = 11.0;

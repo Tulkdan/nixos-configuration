@@ -136,8 +136,6 @@
       (with pkgs; [
         gnome-tour
         gnome-text-editor
-      ])
-      ++ (with pkgs.gnome; [
         gnome-music
         gnome-shell
         geary
@@ -188,6 +186,7 @@
 
   # Installing fonts
   fonts.packages = with pkgs; [
+    departure-mono
     material-design-icons
     fira-code
     hasklig
