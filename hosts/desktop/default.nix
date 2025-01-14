@@ -92,6 +92,12 @@
 
     # Enable VPN
     tailscale.enable = true;
+
+    syncthing = {
+      enable = true;
+      dataDir = "/home/pedro";
+      user = "pedro";
+    };
   };
 
   # Enable sound with pipewire.

@@ -590,6 +590,15 @@ Install package to be compatible with evil mode
         (setq org-log-done 'time)
         (setq org-log-into-drawer t)
 
+        (setq org-default-notes-file "~/Documents/Tasks/refile.org")
+        (setq org-capture-templates
+              '(("t" "Todo" entry (file org-default-notes-file)
+                 "* TODO %?\n%U\n%a\n")
+                ("m" "Meeting" entry (file org-default-notes-file)
+                 "* MEETING with %? :MEETING:\n%U")
+                ("n" "Note" entry (file org-default-notes-file)
+                 "* %? :NOTE:\n%t")))
+
         (setq org-agenda-file-regexp ".*\\.org$")
         (setq org-agenda-files '("~/Documents/Tasks"))
 
@@ -608,33 +617,18 @@ Install package to be compatible with evil mode
         (setq org-agenda-custom-commands
               '(("d" "Dashboard"
                  ((agenda "" ((org-deadline-warning-days 7)))
+                  (tags "REFILE"
+                        ((org-agenda-overriding-header "Tasks to Refile")
+                         (org-tags-match-list-sublevels nil)))
                   (todo "NEXT"
                         ((org-agenda-overriding-header "Next Tasks")))
                   (todo "WORKING"
                         ((org-agenda-overriding-header "Active Projects")))
                   (todo "REVIEW"
-                        ((org-agenda-overriding-header "In Review")))))
-
-                ("w" "Workflow Status"
-                 ((todo "BLOCKED"
-                        ((org-agenda-overriding-header "Blocked on External")
-                         (org-agenda-files org-agenda-files)))
-                  (todo "PLAN"
-                        ((org-agenda-overriding-header "In Planning")
-                         (org-agenda-todo-list-sublevels nil)
-                         (org-agenda-files org-agenda-files)))
-                  (todo "REVIEW"
-                        ((org-agenda-overriding-header "In Review")
-                         (org-agenda-files org-agenda-files)))
-                  (todo "WORKING"
-                        ((org-agenda-overriding-header "Active Projects")
-                         (org-agenda-files org-agenda-files)))
-                  (todo "DONE"
-                        ((org-agenda-overriding-header "Completed Projects")
-                         (org-agenda-files org-agenda-files)))
-                  (todo "CANC"
-                        ((org-agenda-overriding-header "Cancelled Projects")
-                         (org-agenda-files org-agenda-files)))))))
+                        ((org-agenda-overriding-header "In Review")))
+                  (tags "NOTES"
+                        ((org-agenda-overriding-header "Notes")
+                         (org-tags-match-list-sublevels t)))))))
 
         (setq org-link-abbrev-alist
               '(("clickup" . "https://app.clickup.com/t/")))
