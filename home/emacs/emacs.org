@@ -609,9 +609,13 @@ Install package to be compatible with evil mode
         (setq org-todo-keyword-faces
               '(("BLOCKED" . "red") ))
 
+        (setq org-refile-use-outline-path t)
+
         (setq org-refile-targets
               '(("Archive.org" :maxlevel . 1)
-                ("Tasks.org" :maxlevel . 1)))
+                ("Tasks.org" :maxlevel . 1)
+                ("Work.org" :maxlevel . 1)
+                ("Personal.org" :maxlevel . 1)))
 
         ;; Configure custom agenda views
         (setq org-agenda-custom-commands
@@ -626,7 +630,7 @@ Install package to be compatible with evil mode
                         ((org-agenda-overriding-header "Active Projects")))
                   (todo "REVIEW"
                         ((org-agenda-overriding-header "In Review")))
-                  (tags "NOTES"
+                  (tags-todo "+NOTE"
                         ((org-agenda-overriding-header "Notes")
                          (org-tags-match-list-sublevels t)))))))
 
