@@ -604,7 +604,8 @@ Install package to be compatible with evil mode
 
         (setq org-todo-keywords
               '((sequence "BLOCKED(b@)" "PLAN(p)" "NEXT(n)" "WORKING(w)" "REVIEW(v)" "|" "DONE(d!)" "CANC(k@)")
-                (sequence "TODO(t)" "DOING(a)" "|" "COMPLETED(c!)" "CANCELED(C)")))
+                (sequence "TODO(t)" "DOING(a)" "|" "COMPLETED(c!)" "CANCELED(C)")
+                (sequence "MEETING" "|" "DONE")))
 
         (setq org-todo-keyword-faces
               '(("BLOCKED" . "red") ))
