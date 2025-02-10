@@ -98,6 +98,9 @@
       dataDir = "/home/pedro";
       user = "pedro";
     };
+
+    ollama.enable = true;
+    open-webui.enable = true;
   };
 
   # Enable sound with pipewire.
