@@ -711,7 +711,8 @@ Install package to be compatible with evil mode
         (kotlin . t)
         (js . t)
         (elixir . t)
-        (emacs-lisp . t)))
+        (emacs-lisp . t)
+        (d2 . t)))
   #+end_src
 
 ** Presentation
@@ -757,6 +758,12 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
 #+begin_src emacs-lisp
   (use-package verb)
 #+end_src
+
+** D2 org mode
+#+begin_src emacs-lisp
+  (use-package ob-d2)
+#+end_src
+
 * Elfeed
 #+begin_src emacs-lisp
         (use-package elfeed
