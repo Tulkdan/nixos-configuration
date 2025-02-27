@@ -17,6 +17,7 @@
     ./gtk
     ./neovim
     ./vscode
+    ./zed
   ];
 
   home.packages = with pkgs; [
@@ -37,7 +38,6 @@
     gopass
     tomb
     hurl
-    zed-editor
     kubectl
     foliate
     zotero
