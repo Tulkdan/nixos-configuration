@@ -141,16 +141,15 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment = {
-    gnome.excludePackages =
-      (with pkgs; [
-        gnome-tour
-        gnome-text-editor
-        gnome-music
-        gnome-shell
-        geary
-        epiphany
-        totem
-      ]);
+    gnome.excludePackages = with pkgs; [
+      gnome-tour
+      gnome-text-editor
+      gnome-music
+      gnome-shell
+      geary
+      epiphany
+      totem
+    ];
 
     systemPackages = with pkgs; [
       git
