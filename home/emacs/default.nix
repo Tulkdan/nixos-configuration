@@ -2,8 +2,6 @@
   programs.emacs = {
     enable = true;
 
-    package = pkgs.emacs29;
-
     extraConfig = ''
       (setq vc-follow-symlinks t)
 
