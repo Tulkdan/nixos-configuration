@@ -5,7 +5,7 @@
 }: {
   programs.zed-editor = {
     enable = true;
-    extensions = ["nix" "toml" "elixir" "make" "gleam"];
+    extensions = ["nix" "toml" "elixir" "make" "gleam" "0x96f"];
 
     ## everything inside of these brackets are Zed options.
     userSettings = {
@@ -61,8 +61,8 @@
       load_direnv = "shell_hook";
       theme = {
         mode = "system";
-        light = "Ayu Dark";
-        dark = "Ayu Dark";
+        light = "0x96f Theme";
+        dark = "0x96f Theme";
       };
       show_whitespaces = "boundary";
       soft_wrap = "editor_width";
