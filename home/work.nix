@@ -5,10 +5,16 @@
   stateVersion,
   ...
 }: {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   home.packages = with pkgs; [
     wl-clipboard
     nodePackages.mermaid-cli
-    davmail
+    code-cursor
     d2
   ];
 
