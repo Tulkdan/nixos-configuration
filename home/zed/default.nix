@@ -13,6 +13,7 @@
       "gleam"
       "0x96f"
       "just"
+      "colored-zed-icons-theme"
     ];
 
     ## everything inside of these brackets are Zed options.
@@ -37,7 +38,7 @@
         alternate_scroll = "off";
         blinking = "off";
         copy_on_select = false;
-        dock = "bottom";
+        dock = "right";
         detect_venv = {
           on = {
             directories = [".env" "env" ".venv" "venv"];
@@ -71,6 +72,11 @@
         mode = "system";
         light = "0x96f Theme";
         dark = "0x96f Theme";
+      };
+      icon_theme = {
+        mode = "system";
+        light = "Colored Zed Icons Theme Light";
+        dark = "Colored Zed Icons Theme Dark";
       };
       show_whitespaces = "boundary";
       soft_wrap = "editor_width";
