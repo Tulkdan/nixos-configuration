@@ -32,6 +32,9 @@
         pruneTags = true;
         all = true;
       };
+      alias = {
+        tree = "log --graph --oneline";
+      };
     };
 
     delta = {
