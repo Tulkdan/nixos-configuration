@@ -15,6 +15,7 @@
     ghc
     ledger
     hledger
+    gh
   ];
 
   programs.git = {
