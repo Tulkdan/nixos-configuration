@@ -124,7 +124,7 @@
 
     zsh.enable = true;
 
-    niri.enable = true;
+    niri.enable = false;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
