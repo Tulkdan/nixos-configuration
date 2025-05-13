@@ -32,6 +32,7 @@
     delta
     zellij
     just
+    tealdeer
 
     # Tools
     pass
