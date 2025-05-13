@@ -47,6 +47,7 @@
     EDITOR = "nvim";
     VISUAL = "nvim";
     BROWSER = "firefox";
+    MANPAGER = "nvim --clean +Man!";
   };
 
   programs = {
