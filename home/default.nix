@@ -37,11 +37,12 @@
     # Tools
     pass
     gopass
-    tomb
     hurl
     kubectl
-    foliate
     zotero
+    ffmpeg
+    obs-studio
+    mpv
   ];
 
   home.sessionVariables = {
