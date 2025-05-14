@@ -14,7 +14,6 @@
       "0x96f"
       "just"
       "colored-zed-icons-theme"
-      "wakatime"
     ];
 
     ## everything inside of these brackets are Zed options.
