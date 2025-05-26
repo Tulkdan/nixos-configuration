@@ -26,6 +26,23 @@
     };
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        name = "Pedro Correa";
+        email = "pedro8correa@gmail.com";
+      };
+
+      signing = {
+        behavior = "own";
+        backend = "gpg";
+        key = "2748A6200C9EE0B4";
+      };
+    };
+  };
+
+
   services = {
     gpg-agent = {
       enable = true;
