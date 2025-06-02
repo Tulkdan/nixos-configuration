@@ -20,7 +20,7 @@
   } @ inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
-    stateVersion = "23.11";
+    stateVersion = "25.05";
     pkgs = import nixpkgs {
       inherit system;
     };
