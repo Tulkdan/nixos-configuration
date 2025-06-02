@@ -39,6 +39,12 @@
         backend = "gpg";
         key = "2748A6200C9EE0B4";
       };
+
+      ui = {
+        default-command = "log";
+        pager = "delta";
+        diff.format = "git";
+      };
     };
   };
 
