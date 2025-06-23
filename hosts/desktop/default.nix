@@ -125,11 +125,6 @@
     zsh.enable = true;
 
     niri.enable = false;
-
-    kdeconnect = {
-      enable = true;
-      package = pkgs.gnomeExtensions.gsconnect;
-    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
