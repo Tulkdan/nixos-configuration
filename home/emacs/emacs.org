@@ -787,7 +787,14 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
   (use-package ledger-mode
     :hook
     (ledger-mode . company-mode)
-    (ledger-mode . tulkdan/org-mode-visual-fill))
+    (ledger-mode . tulkdan/org-mode-visual-fill)
+    :custom
+    ((ledger-binary-path "hledger")
+     (ledger-mode-should-check-version nil)
+     (ledger-report-auto-width nil)
+     (ledger-report-links-in-register nil)
+     (ledger-report-native-highlighting-arguments '("--color=always")))
+    :mode ("\\.ledger\\'" "\\.journal\\'"))
 #+end_src
 
 * Exercism
