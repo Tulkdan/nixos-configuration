@@ -804,10 +804,3 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
   (use-package exercism)
 #+end_src
 
-* Wakatime
-[[https://wakatime.com/][Opens source plugin to get metrics about programming in text editors]]
-
-#+begin_src emacs-lisp
-  (use-package wakatime-mode)
-  (global-wakatime-mode)
-#+end_src
