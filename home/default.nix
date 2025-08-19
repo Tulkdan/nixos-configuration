@@ -66,7 +66,7 @@
     zsh = {
       enable = true;
       syntaxHighlighting.enable = true;
-      dotDir = ".config/zsh";
+      dotDir = "${config.xdg.configHome}/zsh";
       oh-my-zsh = {
         enable = true;
         plugins = ["git" "pass" "kubectl"];
