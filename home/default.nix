@@ -43,6 +43,8 @@
     ffmpeg
     obs-studio
     mpv
+    podman
+    podman-compose
   ];
 
   home.sessionVariables = {
