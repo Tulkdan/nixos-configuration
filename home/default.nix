@@ -33,6 +33,7 @@
     zellij
     just
     tealdeer
+    bat
 
     # Tools
     pass
