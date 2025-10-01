@@ -29,6 +29,7 @@
     # Utilities
     ripgrep
     jq
+    yq-go
     delta
     zellij
     just
