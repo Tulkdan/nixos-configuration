@@ -10,7 +10,7 @@
       <<inputs>>
     };
 
-    outputs = { self, nixpkgs, home-manager, niri, ... }@inputs: let
+    outputs = { self, nixpkgs, home-manager, niri, vicinae, ... }@inputs: let
       system = "x86_64-linux";
       hostname = "nixos";
       stateVersion = "25.05";
@@ -25,30 +25,6 @@
           username = "pedro-correa";
         };
       };
-      shared-modules = [
-        niri.nixosModules.niri
-        ({pkgs, ...}: {
-          nixpkgs.overlays = [niri.overlays.niri];
-          programs.niri.package = pkgs.niri-unstable;
-          # programs.niri.package = pkgs.niri-stable;
-          # programs.niri.package = pkgs.niri-unstable.override {src = niri-working-tree;};
-          environment.variables.NIXOS_OZONE_WL = "1";
-          environment.systemPackages = with pkgs; [
-            wl-clipboard
-            wayland-utils
-            libsecret
-            cage
-          ];
-        })
-
-        home-manager.nixosModules.home-manager
-        {
-          home-manager = {
-            useUserPackages = true;
-            extraSpecialArgs = inputs;
-          };
-        }
-      ];
     in {
       <<outputs>>
     };
@@ -90,6 +66,11 @@
   ags.url = "github:Aylur/ags";
 #+end_src
 
+*** [[https://docs.vicinae.com/][Vicinae]]
+#+begin_src nix
+  vicinae.url = "github:vicinaehq/vicinae";
+#+end_src
+
 ** Outputs
 :PROPERTIES:
 :header-args: :noweb-ref outputs
@@ -107,8 +88,29 @@
       inherit system;
 
       modules =
-        shared-modules
-        ++ [
+        [
+          niri.nixosModules.niri
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [niri.overlays.niri];
+            programs.niri.package = pkgs.niri-unstable;
+            # programs.niri.package = pkgs.niri-stable;
+            # programs.niri.package = pkgs.niri-unstable.override {src = niri-working-tree;};
+            environment.variables.NIXOS_OZONE_WL = "1";
+            environment.systemPackages = with pkgs; [
+              wl-clipboard
+              wayland-utils
+              libsecret
+              cage
+            ];
+          })
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = inputs;
+            };
+          }
           ./hosts/desktop
         ];
     };
@@ -119,20 +121,21 @@
 
 **** Personal
 #+begin_src nix
-    homeConfigurations = {
-      pedro = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit stateVersion;
-          inherit inputs;
-          username = users.pedro.username;
-        };
-        modules = [
-          ./home
-          ./home/personal.nix
-        ];
+  homeConfigurations = {
+    pedro = home-manager.lib.homeManagerConfiguration {
+      inherit pkgs;
+      extraSpecialArgs = {
+        inherit stateVersion;
+        inherit inputs;
+        username = users.pedro.username;
       };
+      modules = [
+        vicinae.homeManagerModules.default
+        ./home
+        ./home/personal.nix
+      ];
     };
+  };
 #+end_src
 
 **** Work
@@ -145,6 +148,7 @@
         username = users.work.username;
       };
       modules = [
+        vicinae.homeManagerModules.default
         ./home
         ./home/work.nix
       ];

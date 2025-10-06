@@ -9,6 +9,7 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     ags.url = "github:Aylur/ags";
+    vicinae.url = "github:vicinaehq/vicinae";
   };
 
   outputs = {
@@ -16,6 +17,7 @@
     nixpkgs,
     home-manager,
     niri,
+    vicinae,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -32,41 +34,37 @@
         username = "pedro-correa";
       };
     };
-    shared-modules = [
-      niri.nixosModules.niri
-      ({pkgs, ...}: {
-        nixpkgs.overlays = [niri.overlays.niri];
-        programs.niri.package = pkgs.niri-unstable;
-        # programs.niri.package = pkgs.niri-stable;
-        # programs.niri.package = pkgs.niri-unstable.override {src = niri-working-tree;};
-        environment.variables.NIXOS_OZONE_WL = "1";
-        environment.systemPackages = with pkgs; [
-          wl-clipboard
-          wayland-utils
-          libsecret
-          cage
-        ];
-      })
-
-      home-manager.nixosModules.home-manager
-      {
-        home-manager = {
-          useUserPackages = true;
-          extraSpecialArgs = inputs;
-        };
-      }
-    ];
   in {
     formatter.x86_64-linux = pkgs.alejandra;
     nixosConfigurations = {
       ${hostname} = nixpkgs.lib.nixosSystem {
         inherit system;
 
-        modules =
-          shared-modules
-          ++ [
-            ./hosts/desktop
-          ];
+        modules = [
+          niri.nixosModules.niri
+          ({pkgs, ...}: {
+            nixpkgs.overlays = [niri.overlays.niri];
+            programs.niri.package = pkgs.niri-unstable;
+            # programs.niri.package = pkgs.niri-stable;
+            # programs.niri.package = pkgs.niri-unstable.override {src = niri-working-tree;};
+            environment.variables.NIXOS_OZONE_WL = "1";
+            environment.systemPackages = with pkgs; [
+              wl-clipboard
+              wayland-utils
+              libsecret
+              cage
+            ];
+          })
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useUserPackages = true;
+              extraSpecialArgs = inputs;
+            };
+          }
+          ./hosts/desktop
+        ];
       };
     };
     homeConfigurations = {
@@ -78,6 +76,7 @@
           username = users.pedro.username;
         };
         modules = [
+          vicinae.homeManagerModules.default
           ./home
           ./home/personal.nix
         ];
@@ -91,6 +90,7 @@
           username = users.work.username;
         };
         modules = [
+          vicinae.homeManagerModules.default
           ./home
           ./home/work.nix
         ];

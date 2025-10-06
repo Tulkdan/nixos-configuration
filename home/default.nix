@@ -16,6 +16,7 @@
     ./git
     ./gtk
     ./neovim
+    ./vicinae
     ./vscode
     ./zed
   ];
