@@ -1,0 +1,15 @@
+# Halloy config.
+#
+# For a complete list of available options,
+# please visit https://halloy.chat/configuration/
+
+theme = "Catppuccin Mocha"
+
+[servers.liberachat]
+nickname = "Tulkdan"
+nick_password_file = "~/.config/halloy/password"
+server = "irc.libera.chat"
+channels = ["#halloy", "#janet", "#kotlin", "#Brasil", "#elixir", "#pico.sh"]
+
+[font]
+family = "Monaspace Krypton"

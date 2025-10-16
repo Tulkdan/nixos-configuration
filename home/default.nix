@@ -15,6 +15,7 @@
     ./emacs
     ./git
     ./gtk
+    ./halloy
     ./obsidian
     ./neovim
     ./vicinae
