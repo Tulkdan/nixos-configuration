@@ -18,7 +18,7 @@
   ];
 
   programs.git = {
-    userEmail = "pedro8correa@gmail.com";
+    settings.user.email = "pedro8correa@gmail.com";
     signing = {
       key = "2748A6200C9EE0B4";
       signByDefault = true;

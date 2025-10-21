@@ -1,9 +1,9 @@
 {
   programs.git = {
     enable = true;
-    userName = "Pedro Correa";
     ignores = ["*~" "*.swp"];
-    extraConfig = {
+    settings = {
+      user.name = "Pedro Correa";
       commit = {
         template = "~/.config/git/message";
         verbose = true;
@@ -36,12 +36,13 @@
         tree = "log --graph --oneline";
       };
     };
+  };
 
-    delta = {
-      enable = true;
-      options = {
-        navigate = true;
-      };
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options = {
+      navigate = true;
     };
   };
 
