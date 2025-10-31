@@ -50,6 +50,7 @@
     mpv
     podman
     podman-compose
+    bitwarden-cli
   ];
 
   home.sessionVariables = {
