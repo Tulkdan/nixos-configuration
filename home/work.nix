@@ -16,6 +16,7 @@
     nodePackages.mermaid-cli
     code-cursor
     d2
+    jetbrains.datagrip
   ];
 
   programs.git = {
