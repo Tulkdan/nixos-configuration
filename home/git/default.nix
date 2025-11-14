@@ -38,6 +38,15 @@
     };
   };
 
+  programs.jujutsu = {
+    enable = true;
+    settings.ui = {
+      default-command = "log";
+      pager = "delta";
+      diff-formatter = ":git";
+    };
+  };
+
   programs.delta = {
     enable = true;
     enableGitIntegration = true;

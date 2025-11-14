@@ -25,4 +25,12 @@
       signByDefault = true;
     };
   };
+
+  programs.jujutsu.settings = {
+    signing = {
+      behavior = "own";
+      backend = "gpg";
+      key = "B67C86C563761C3A";
+    };
+  };
 }
