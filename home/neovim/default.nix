@@ -34,8 +34,6 @@
       load('user.keymaps')
 
       lazy.setup("plugins")
-
-      vim.cmd.colorscheme('jellybeans-nvim')
     '';
   };
 
