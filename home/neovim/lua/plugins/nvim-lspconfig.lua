@@ -15,7 +15,6 @@ return {
     end)
 
     require('lspconfig').gleam.setup({})
-    require('lspconfig').gopls.setup()
 
     require('mason-lspconfig').setup({
         ensure_installed = {},
@@ -24,6 +23,7 @@ return {
           lua_ls = function()
             -- (Optional) Configure lua language server for neovim
             local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').gopls.setup()
             require('lspconfig').lua_ls.setup(lua_opts)
           end,
         }
