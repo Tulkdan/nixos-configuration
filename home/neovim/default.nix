@@ -34,6 +34,8 @@
       load('user.keymaps')
 
       lazy.setup("plugins")
+
+      vim.cmd.colorscheme('evergarden')
     '';
   };
 

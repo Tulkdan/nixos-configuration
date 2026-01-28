@@ -106,5 +106,3 @@ set noshowmode                                    " remove insert info
 if has('nvim') || has('termguicolors')
   set termguicolors
 endif
-
-colorscheme vague
