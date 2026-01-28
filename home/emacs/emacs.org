@@ -476,11 +476,6 @@ Smooth scrolling with pixel precision mode
     :mode "\\.nix\\'")
 #+end_src
 
-*** Mermaid
-#+begin_src emacs-lisp
-  (use-package ob-mermaid)
-#+end_src
-
 *** Elixir
 #+begin_src emacs-lisp
   (use-package elixir-ts-mode
@@ -757,11 +752,6 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
 
 #+begin_src emacs-lisp
   (use-package verb)
-#+end_src
-
-** D2 org mode
-#+begin_src emacs-lisp
-  (use-package ob-d2)
 #+end_src
 
 * Elfeed
