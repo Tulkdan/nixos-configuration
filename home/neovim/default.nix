@@ -8,7 +8,7 @@
       LazyVim
     ];
 
-    extraLuaConfig = ''
+    initLua = ''
       local lazy = {}
 
       function lazy.setup(plugins)
