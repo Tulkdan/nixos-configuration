@@ -1,5 +1,5 @@
 pedro:
-  home-manager switch --flake 'flake.nix#pedro'
+  home-manager switch --flake '.#pedro'
 
 system:
-  sudo nixos-rebuild switch --flake 'flake.nix#nixos'
+  sudo nixos-rebuild switch --flake '.#nixos'
