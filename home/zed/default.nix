@@ -18,21 +18,10 @@
 
     ## everything inside of these brackets are Zed options.
     userSettings = {
-      assistant = {
-        enabled = true;
-        version = "2";
-        default_model = {
-          provider = "ollama";
-          model = "deepseek-r1:1.5b";
-        };
-      };
-
       node = {
         path = lib.getExe pkgs.nodejs;
         npm_path = lib.getExe' pkgs.nodejs "npm";
       };
-
-      hour_format = "hour24";
       auto_update = false;
       terminal = {
         alternate_scroll = "off";
@@ -53,7 +42,7 @@
         button = false;
         shell = "system";
         toolbar = {
-          title = true;
+          breadcrumbs = true;
         };
         working_directory = "current_project_directory";
       };
@@ -82,7 +71,9 @@
       soft_wrap = "editor_width";
       ui_font_size = 13;
       buffer_font_size = 13;
-      relative_line_numbers = true;
+      relative_line_numbers = "wrapped";
+      buffer_font_family = "Departure Mono";
+      ui_font_family = "Departure Mono";
     };
   };
 }
