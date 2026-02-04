@@ -16,7 +16,6 @@
     ./git
     ./gtk
     ./halloy
-    ./obsidian
     ./neovim
     ./vicinae
     ./vscode
