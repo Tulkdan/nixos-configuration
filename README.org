@@ -21,9 +21,6 @@
         pedro = {
           username = "pedro";
         };
-        work = {
-          username = "pedro-correa";
-        };
       };
     in {
       <<outputs>>
@@ -133,24 +130,6 @@
         vicinae.homeManagerModules.default
         ./home
         ./home/personal.nix
-      ];
-    };
-  };
-#+end_src
-
-**** Work
-#+begin_src nix
-  homeConfigurations = {
-    work = home-manager.lib.homeManagerConfiguration {
-      inherit pkgs;
-      extraSpecialArgs = {
-        inherit stateVersion;
-        username = users.work.username;
-      };
-      modules = [
-        vicinae.homeManagerModules.default
-        ./home
-        ./home/work.nix
       ];
     };
   };

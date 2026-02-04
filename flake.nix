@@ -30,9 +30,6 @@
       pedro = {
         username = "pedro";
       };
-      work = {
-        username = "pedro-correa";
-      };
     };
   in {
     formatter.x86_64-linux = pkgs.alejandra;
@@ -79,20 +76,6 @@
           vicinae.homeManagerModules.default
           ./home
           ./home/personal.nix
-        ];
-      };
-    };
-    homeConfigurations = {
-      work = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = {
-          inherit stateVersion;
-          username = users.work.username;
-        };
-        modules = [
-          vicinae.homeManagerModules.default
-          ./home
-          ./home/work.nix
         ];
       };
     };
