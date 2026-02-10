@@ -93,14 +93,6 @@
     # Enable VPN
     tailscale.enable = true;
 
-    syncthing = {
-      enable = true;
-      dataDir = "/home/pedro";
-      user = "pedro";
-    };
-
-    ollama.enable = true;
-    open-webui.enable = true;
     pulseaudio.enable = false;
   };
 
