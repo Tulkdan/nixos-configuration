@@ -706,8 +706,7 @@ Install package to be compatible with evil mode
         (kotlin . t)
         (js . t)
         (elixir . t)
-        (emacs-lisp . t)
-        (d2 . t)))
+        (emacs-lisp . t)))
   #+end_src
 
 ** Presentation
