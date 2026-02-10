@@ -44,10 +44,5 @@
       source = ./lua;
       recursive = true;
     };
-
-    ".vim/.skeleton.html".source = ./skeletons/.skeleton.html;
-    ".vim/.skeleton.py".source = ./skeletons/.skeleton.py;
-    ".vim/.skeleton.tex".source = ./skeletons/.skeleton.tex;
-    ".vim/.skeleton.vue.test".source = ./skeletons/.skeleton.vue.test;
   };
 }
