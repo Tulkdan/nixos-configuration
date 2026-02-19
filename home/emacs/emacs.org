@@ -793,3 +793,12 @@ But first, let's intall hide-mode-line to hide the modeline when presenting
   (use-package exercism)
 #+end_src
 
+* Cooklang
+[[https://cooklang.org/][A recipe markup language]]
+
+#+begin_src emacs-lisp
+  (use-package cook-mode
+    :vc (:url "https://github.com/cooklang/cook-mode"
+         :rev :newest
+         :branch "master"))
+#+end_src
