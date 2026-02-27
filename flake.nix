@@ -10,6 +10,9 @@
     niri.url = "github:sodiboo/niri-flake";
     ags.url = "github:Aylur/ags";
     vicinae.url = "github:vicinaehq/vicinae";
+    fsel.url = "github:Mjoyufull/fsel";
+    micasa.url = "github:cpcloud/micasa";
+    otter-launcher.url = "github:kuokuo123/otter-launcher";
   };
 
   outputs = {
@@ -18,6 +21,8 @@
     home-manager,
     niri,
     vicinae,
+    fsel,
+    micasa,
     ...
   } @ inputs: let
     system = "x86_64-linux";
@@ -76,6 +81,11 @@
           vicinae.homeManagerModules.default
           ./home
           ./home/personal.nix
+          {
+            home.packages = [
+              fsel.packages."${system}".default
+            ];
+          }
         ];
       };
     };

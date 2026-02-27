@@ -1,21 +1,28 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }: {
   imports = [
     ./firefox
     ./keyboard
+    ./otter-launcher
   ];
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
-    ghc
-    ledger
-    hledger
-    qutebrowser
-  ];
+  home.packages = with pkgs;
+    [
+      ghc
+      ledger
+      hledger
+      qutebrowser
+    ]
+    ++ [
+      inputs.micasa.packages."${system}".default
+      inputs.otter-launcher.packages."${system}".default
+    ];
 
   programs.git = {
     settings.user.email = "pedro8correa@gmail.com";

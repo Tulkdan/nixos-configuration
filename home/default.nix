@@ -37,6 +37,8 @@
     just
     tealdeer
     bat
+    fzf
+    btop
 
     # Tools
     pass
