@@ -9,7 +9,6 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     ags.url = "github:Aylur/ags";
-    vicinae.url = "github:vicinaehq/vicinae";
     fsel.url = "github:Mjoyufull/fsel";
     micasa.url = "github:cpcloud/micasa";
     otter-launcher.url = "github:kuokuo123/otter-launcher";
@@ -20,7 +19,6 @@
     nixpkgs,
     home-manager,
     niri,
-    vicinae,
     fsel,
     micasa,
     ...
@@ -78,7 +76,6 @@
           username = users.pedro.username;
         };
         modules = [
-          vicinae.homeManagerModules.default
           ./home
           ./home/personal.nix
           {

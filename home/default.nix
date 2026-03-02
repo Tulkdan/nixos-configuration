@@ -17,7 +17,6 @@
     ./gtk
     ./halloy
     ./neovim
-    ./vicinae
     ./vscode
     ./zed
   ];
