@@ -4,7 +4,7 @@
 
 Here I'm forcing some basic configuration from emacs for my liking
 #+begin_src emacs-lisp
-  (setq user-mail-address "pedro.correa@zigpay.com.br")
+  (setq user-mail-address "pedro.correa@gmail.com")
   (setq user-full-name "Pedro Correa")
 
   (set-mouse-color "GhostWhite")
@@ -423,25 +423,6 @@ Smooth scrolling with pixel precision mode
 #+end_src
 
 ** Languages
-*** Web
-#+begin_src emacs-lisp
-  (use-package web-mode
-    :config
-    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
-    (add-to-list 'auto-mode-alist '("\\.vue\\'" . web-mode)))
-#+end_src
-
-*** Typescript
-#+begin_src emacs-lisp
-  (use-package typescript-mode
-    :mode "\\.ts\\'"
-    :hook (typecript-mode . lsp-deferred))
-#+end_src
-
-**** Deno
-#+begin_src emacs-lisp
-  (use-package deno-ts-mode)
-#+end_src
 *** Haskell
 #+begin_src emacs-lisp
   (use-package lsp-haskell)
@@ -547,7 +528,7 @@ Install package to be compatible with evil mode
 		       (org-level-6 . 1.1)
 		       (org-level-7 . 1.1)
 		       (org-level-8 . 1.1)))
-        (set-face-attribute (car face) nil :font "Monaspace Krypton" :weight 'regular :height (cdr face)))
+        (set-face-attribute (car face) nil :font "Departure Mono" :weight 'regular :height (cdr face)))
 
        ;; Ensure that anything that should be fixed-pitch in Org files appears that way
        (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -712,7 +693,7 @@ Install package to be compatible with evil mode
 ** Presentation
 Using org-tree-slide to turn org files into a prensentation
 
-But first, let's intall hide-mode-line to hide the modeline when presenting
+But first, let's install hide-mode-line to hide the modeline when presenting
 #+begin_src emacs-lisp
   (use-package hide-mode-line)
 #+end_src
