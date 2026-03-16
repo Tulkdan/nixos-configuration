@@ -13,12 +13,13 @@ Here I'm forcing some basic configuration from emacs for my liking
 Activating ~hs-minor-mode~ on `prog-mode~ so I can fold functions based on indentation
 #+begin_src emacs-lisp
   (add-hook 'prog-mode-hook #'(lambda () (hs-minor-mode t)))
+  (setq global-hl-line-mode t)
+  (setq hl-line-mode t)
 #+end_src
 
 * Package
 
   #+begin_src emacs-lisp
-
     ;; Initialize package sources
     (require 'package)
 
@@ -353,7 +354,6 @@ Smooth scrolling with pixel precision mode
           (toml "https://github.com/tree-sitter/tree-sitter-toml")
           (tsx "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "tsx/src")
           (typescript "https://github.com/tree-sitter/tree-sitter-typescript" "v0.20.3" "typescript/src")
-          (elixir "https://github.com/elixir-lang/tree-sitter-elixir")
           (yaml "https://github.com/ikatyang/tree-sitter-yaml")))
 
   (setq major-mode-remap-alist
@@ -363,7 +363,6 @@ Smooth scrolling with pixel precision mode
           (typescript-mode . typescript-ts-mode)
           (json-mode . json-ts-mode)
           (css-mode . css-ts-mode)
-          (elixir-mode . elixir-ts-mode)
           (go-mode . go-ts-mode)
           (python-mode . python-ts-mode)))
 #+end_src
