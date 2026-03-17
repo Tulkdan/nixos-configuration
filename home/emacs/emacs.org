@@ -766,6 +766,12 @@ But first, let's install hide-mode-line to hide the modeline when presenting
     :mode ("\\.ledger\\'" "\\.journal\\'"))
 #+end_src
 
+#+begin_src emacs-lisp
+  (use-package flycheck-hledger
+    :after (flycheck ledger-mode)
+    :demand t)
+#+end_src
+
 * Exercism
 [[https://exercism.org/dashboard][It's a tool to practice or learning a programming language]]
 
