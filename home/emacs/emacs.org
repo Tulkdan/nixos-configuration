@@ -389,7 +389,6 @@ Smooth scrolling with pixel precision mode
          :hook
          (typescript-ts-mode . eglot-ensure)
          (kotlin-mode . eglot-ensure)
-         (elixir-ts-mode . eglot-ensure)
          (deno-ts-mode . eglot-ensure)
          (gleam-ts-mode . eglot-ensure)
          :ensure nil)
@@ -442,26 +441,6 @@ Smooth scrolling with pixel precision mode
 #+begin_src emacs-lisp
   (use-package nix-mode
     :mode "\\.nix\\'")
-#+end_src
-
-*** Elixir
-#+begin_src emacs-lisp
-  (use-package elixir-ts-mode
-    :hook
-    (elixir-ts-mode
-     .
-     (lambda ()
-       (push '(">=" . ?\u2265) prettify-symbols-alist)
-       (push '("<=" . ?\u2264) prettify-symbols-alist)
-       (push '("!=" . ?\u2260) prettify-symbols-alist)
-       (push '("==" . ?\u2A75) prettify-symbols-alist)
-       (push '("=~" . ?\u2245) prettify-symbols-alist)
-       (push '("<-" . ?\u2190) prettify-symbols-alist)
-       (push '("->" . ?\u2192) prettify-symbols-alist)
-       (push '("|>" . ?\u25B7) prettify-symbols-alist)))
-    (before-save . eglot-format))
-
-  (use-package ob-elixir)
 #+end_src
 
 *** Gleam
@@ -665,7 +644,6 @@ Install package to be compatible with evil mode
      (add-to-list 'org-structure-template-alist '("sql" . "src sql"))
      (add-to-list 'org-structure-template-alist '("nix" . "src nix"))
      (add-to-list 'org-structure-template-alist '("kt" . "src kotlin"))
-     (add-to-list 'org-structure-template-alist '("ex" . "src elixir"))
 
      (org-babel-do-load-languages
       'org-babel-load-languages
@@ -673,7 +651,6 @@ Install package to be compatible with evil mode
         (mermaid . t)
         (kotlin . t)
         (js . t)
-        (elixir . t)
         (emacs-lisp . t)))
   #+end_src
 
