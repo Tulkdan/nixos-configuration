@@ -96,7 +96,6 @@ Smooth scrolling with pixel precision mode
                     term-mode-hook
                     eshell-mode-hook
                     shell-mode-hook
-                    neotree-mode-hook
                     elfeed-mode-hook))
       (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
@@ -148,13 +147,6 @@ Smooth scrolling with pixel precision mode
     (load-theme 'kaolin-galaxy t))
 #+end_src
 
-** Neotree
-#+begin_src emacs-lisp
-  (use-package neotree
-    :config
-    (setq neo-theme 'ascii)
-    (setq neo-smart-open nil))
-#+end_src
 
 * Keybinding
 
@@ -163,9 +155,6 @@ Smooth scrolling with pixel precision mode
    #+begin_src emacs-lisp
      ;; Make ESC quit prompts
      (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-
-     ;; Toggle neotree panel
-     (global-set-key (kbd "<f5>") 'neotree-toggle)
    #+end_src
    
 ** Ivy and Counsel
@@ -285,8 +274,7 @@ Smooth scrolling with pixel precision mode
        (projectile-mode t)
        :config
        (setq projectile-enable-caching t)
-       (setq projectile-switch-project-action #'projectile-dired)
-       (setq projectile-switch-project-action #'neotree-projectile-action))
+       (setq projectile-switch-project-action #'projectile-dired))
 
      (use-package counsel-projectile
        :after projectile
