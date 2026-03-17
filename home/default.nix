@@ -16,6 +16,7 @@
     ./git
     ./gtk
     ./halloy
+    ./helix
     ./neovim
     ./vscode
     ./zed
@@ -38,6 +39,7 @@
     bat
     fzf
     btop
+    gopls
 
     # Tools
     pass

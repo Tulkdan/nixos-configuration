@@ -1,0 +1,26 @@
+theme = "nyxvamp-obsidian"
+
+[editor]
+line-number              = "relative"
+cursorline               = true
+end-of-line-diagnostics  = "hint"
+trim-trailing-whitespace = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.statusline]
+left        = ["mode", "version-control", "file-name", "file-modification-indicator"]
+mode.normal = "NORMAL"
+mode.insert = "INSERT"
+mode.select = "SELECT"
+
+[editor.soft-wrap]
+enable = true
+
+[editor.whitespace.render]
+space = "all"
+tab   = "all"
+
+[editor.inline-diagnostics]
+cursor-line = "error"
