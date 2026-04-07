@@ -71,7 +71,7 @@ Smooth scrolling with pixel precision mode
 #+begin_src emacs-lisp
   (pixel-scroll-precision-mode 1)
 #+end_src
-  
+
 ** Dashboard
   #+begin_src emacs-lisp
     (use-package dashboard
@@ -104,7 +104,7 @@ Smooth scrolling with pixel precision mode
 
    #+begin_src emacs-lisp
      (set-face-attribute 'default nil
-                         :family "Departure Mono"
+                         :family "Monaspace Krypton"
                          :height 100
                          :weight 'normal
                          :width 'normal)
@@ -156,7 +156,7 @@ Smooth scrolling with pixel precision mode
      ;; Make ESC quit prompts
      (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
    #+end_src
-   
+
 ** Ivy and Counsel
 
    #+begin_src emacs-lisp
@@ -249,7 +249,7 @@ Smooth scrolling with pixel precision mode
        :custom
        (magit-display-buffer-function #'magit-display-buffer-same-window-except-diff-v1))
    #+end_src
-   
+
 *** Magit delta
 #+begin_src emacs-lisp
   (use-package magit-delta
@@ -301,7 +301,7 @@ Smooth scrolling with pixel precision mode
           (gleam-ts-mode . lsp-deferred)
           (haskell-literate-mode . lsp-deferred))
     #+end_src
-    
+
 *** lsp-ui
 #+begin_src emacs-lisp
   (use-package lsp-ui
@@ -310,16 +310,16 @@ Smooth scrolling with pixel precision mode
     (lsp-ui-doc-position 'bottom))
 #+end_src
 
-*** lsp-ivy 
+*** lsp-ivy
 #+begin_src emacs-lisp
   (use-package lsp-ivy)
 #+end_src
 
-*** lsp-treemacs 
+*** lsp-treemacs
 #+begin_src emacs-lisp
   (use-package lsp-treemacs)
 #+end_src
-   
+
 *** Dap Mode
 #+begin_src emacs-lisp
   (use-package dap-mode)
@@ -494,7 +494,7 @@ Install package to be compatible with evil mode
 		       (org-level-6 . 1.1)
 		       (org-level-7 . 1.1)
 		       (org-level-8 . 1.1)))
-        (set-face-attribute (car face) nil :font "Departure Mono" :weight 'regular :height (cdr face)))
+        (set-face-attribute (car face) nil :font "Monaspace Krypton" :weight 'regular :height (cdr face)))
 
        ;; Ensure that anything that should be fixed-pitch in Org files appears that way
        (set-face-attribute 'org-block nil    :foreground nil :inherit 'fixed-pitch)
@@ -619,7 +619,7 @@ Install package to be compatible with evil mode
      (use-package visual-fill-column
        :hook (org-mode . tulkdan/org-mode-visual-fill))
    #+end_src
-   
+
 ** Org Modern
 
 #+begin_src emacs-lisp

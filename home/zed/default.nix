@@ -72,8 +72,8 @@
       ui_font_size = 13;
       buffer_font_size = 13;
       relative_line_numbers = "wrapped";
-      buffer_font_family = "Departure Mono";
-      ui_font_family = "Departure Mono";
+      buffer_font_family = "Monaspace Krypton";
+      ui_font_family = "Monaspace Krypton";
     };
   };
 }
