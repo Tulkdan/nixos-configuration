@@ -6,10 +6,16 @@
 theme = "Catppuccin Mocha"
 
 [servers.liberachat]
-nickname = "Tulkdan"
-nick_password_file = "~/.config/halloy/password"
-server = "irc.libera.chat"
-channels = ["#halloy", "#janet", "#kotlin", "#Brasil", "#elixir", "#pico.sh"]
+nickname = "tulkdan"
+server = "irctoday.com"
+
+[servers.liberachat.sasl.plain]
+username = "tulkdan"
+password_file = "~/.config/halloy/password"
+password_file_first_line_only = true
 
 [font]
 family = "Monaspace Krypton"
+
+[platform_specific]
+linux.decorations = false
