@@ -1,5 +1,12 @@
 [languages-server.gopls]
 command = "gopls"
 args = ["-logfile=/tmp/gopls.log", "serve"]
+
 [language-server.gopls.config]
 "ui.diagnostic.staticcheck" = true
+
+[[language]]
+name = "go"
+auto-format = true
+language-servers = ["gopls"]
+formatter = { command = "gofumpt" }

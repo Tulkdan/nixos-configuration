@@ -27,6 +27,7 @@
     nodejs
     go
     sqlc
+    gofumpt
 
     # Utilities
     ripgrep
