@@ -9,9 +9,7 @@
     };
     niri.url = "github:sodiboo/niri-flake";
     ags.url = "github:Aylur/ags";
-    fsel.url = "github:Mjoyufull/fsel";
     micasa.url = "github:cpcloud/micasa";
-    otter-launcher.url = "github:kuokuo123/otter-launcher";
   };
 
   outputs = {
@@ -19,13 +17,12 @@
     nixpkgs,
     home-manager,
     niri,
-    fsel,
     micasa,
     ...
   } @ inputs: let
     system = "x86_64-linux";
     hostname = "nixos";
-    stateVersion = "25.05";
+    stateVersion = "25.11";
     pkgs = import nixpkgs {
       inherit system;
     };
@@ -78,11 +75,6 @@
         modules = [
           ./home
           ./home/personal.nix
-          {
-            home.packages = [
-              fsel.packages."${system}".default
-            ];
-          }
         ];
       };
     };

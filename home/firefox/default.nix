@@ -5,6 +5,7 @@
 }: {
   programs.firefox = {
     enable = true;
+    configPath = "${config.xdg.configHome}/mozilla/firefox";
 
     profiles.${config.home.username} = {
       settings = {
@@ -79,7 +80,7 @@
           definedAliases = ["@npm"];
         };
 
-        "Google".metaData.alias = "@g";
+        "google".metaData.alias = "@g";
       };
     };
   };

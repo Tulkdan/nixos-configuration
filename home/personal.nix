@@ -7,7 +7,6 @@
   imports = [
     ./firefox
     ./keyboard
-    ./otter-launcher
   ];
 
   # The home.packages option allows you to install Nix packages into your
@@ -21,7 +20,6 @@
     ]
     ++ [
       inputs.micasa.packages."${system}".default
-      inputs.otter-launcher.packages."${system}".default
     ];
 
   programs.git = {

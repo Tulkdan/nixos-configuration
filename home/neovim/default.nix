@@ -2,6 +2,9 @@
   programs.neovim = {
     enable = true;
 
+    withRuby = false;
+    withPython3 = false;
+
     defaultEditor = true;
 
     plugins = with pkgs.vimPlugins; [

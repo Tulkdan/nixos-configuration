@@ -10,10 +10,10 @@
       <<inputs>>
     };
 
-    outputs = { self, nixpkgs, home-manager, niri, vicinae, ... }@inputs: let
+    outputs = { self, nixpkgs, home-manager, niri, micasa, ... }@inputs: let
       system = "x86_64-linux";
       hostname = "nixos";
-      stateVersion = "25.05";
+      stateVersion = "25.11";
       pkgs = import nixpkgs {
         inherit system;
       };
@@ -63,9 +63,9 @@
   ags.url = "github:Aylur/ags";
 #+end_src
 
-*** [[https://docs.vicinae.com/][Vicinae]]
+*** [[https://micasa.dev][Micasa]]
 #+begin_src nix
-  vicinae.url = "github:vicinaehq/vicinae";
+  micasa.url = "github:cpcloud/micasa";
 #+end_src
 
 ** Outputs
@@ -127,7 +127,6 @@
         username = users.pedro.username;
       };
       modules = [
-        vicinae.homeManagerModules.default
         ./home
         ./home/personal.nix
       ];

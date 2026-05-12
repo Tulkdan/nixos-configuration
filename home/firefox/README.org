@@ -11,6 +11,7 @@
   {
     programs.firefox = {
       enable = true;
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
 #+end_src
 
 ** Profiles
@@ -86,7 +87,7 @@ Settings for my profile
       definedAliases = [ "@npm" ];
     };
 
-    "Google".metaData.alias = "@g";
+    "google".metaData.alias = "@g";
   };
 #+end_src
 
