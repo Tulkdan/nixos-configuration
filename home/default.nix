@@ -20,6 +20,7 @@
     ./neovim
     ./vscode
     ./zed
+    ./noctalia
   ];
 
   home.packages = with pkgs; [

@@ -10,6 +10,7 @@
     niri.url = "github:sodiboo/niri-flake";
     ags.url = "github:Aylur/ags";
     micasa.url = "github:cpcloud/micasa";
+    noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
   };
 
   outputs = {
