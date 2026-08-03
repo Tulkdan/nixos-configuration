@@ -35,7 +35,7 @@
     jq
     yq-go
     delta
-    zellij
+    zmx
     just
     tealdeer
     bat
@@ -71,6 +71,7 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
+      extraPackages = [ pkgs.jj-starship ];
     };
 
     # Enabling zsh
