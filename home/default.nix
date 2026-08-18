@@ -12,6 +12,7 @@
 
   imports = [
     ./alacritty
+    ./ghostty
     ./emacs
     ./git
     ./gtk
