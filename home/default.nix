@@ -55,6 +55,7 @@
     mpv
     podman
     podman-compose
+    openlogi
   ];
 
   home.sessionVariables = {
