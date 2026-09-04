@@ -7,7 +7,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    niri.url = "github:sodiboo/niri-flake";
+    niri = {
+      url = "github:sodiboo/niri-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     ags.url = "github:Aylur/ags";
     micasa.url = "github:cpcloud/micasa";
     noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
@@ -41,10 +44,14 @@
         modules = [
           niri.nixosModules.niri
           ({pkgs, ...}: {
-            nixpkgs.overlays = [niri.overlays.niri];
-            programs.niri.package = pkgs.niri-unstable;
+            nixpkgs.overlays = [
+              (final: prev: {
+                libdisplay-info_0_2 = prev.libdisplay-info_0_3;
+              })
+            ];
+            programs.niri.package = pkgs.niri;
             # programs.niri.package = pkgs.niri-stable;
-            # programs.niri.package = pkgs.niri-unstable.override {src = niri-working-tree;};
+            # programs.niri.package = pkgs.niri-unstable.override {libdisplay-info_0_2 = pkgs.libdisplay_0_3;};
             environment.variables.NIXOS_OZONE_WL = "1";
             environment.systemPackages = with pkgs; [
               wl-clipboard

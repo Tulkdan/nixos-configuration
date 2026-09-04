@@ -73,7 +73,7 @@
     starship = {
       enable = true;
       enableZshIntegration = true;
-      extraPackages = [ pkgs.jj-starship ];
+      extraPackages = [pkgs.jj-starship];
     };
 
     # Enabling zsh
