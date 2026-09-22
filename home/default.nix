@@ -13,6 +13,7 @@
   imports = [
     ./alacritty
     ./ghostty
+    ./foot
     ./emacs
     ./git
     ./gtk

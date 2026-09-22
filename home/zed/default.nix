@@ -35,7 +35,7 @@
           };
         };
         env = {
-          TERM = "ghostty";
+          TERM = "foot";
         };
         line_height = "comfortable";
         option_as_meta = false;
