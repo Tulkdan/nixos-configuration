@@ -94,6 +94,11 @@
     tailscale.enable = true;
 
     pulseaudio.enable = false;
+
+    ollama = {
+      enable = true;
+      package = pkgs.ollama-vulkan;
+    };
   };
 
   # Enable sound with pipewire.
