@@ -10,6 +10,12 @@
 
   home.stateVersion = stateVersion;
 
+  # Zotero dependencies
+  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.permittedInsecurePackages = [
+    "firefox-esr-140-bin-unwrapped-140.17.0esr"
+  ];
+
   imports = [
     ./alacritty
     ./ghostty
