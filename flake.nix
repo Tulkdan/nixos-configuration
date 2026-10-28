@@ -13,7 +13,10 @@
     };
     ags.url = "github:Aylur/ags";
     micasa.url = "github:cpcloud/micasa";
-    noctalia.url = "github:noctalia-dev/noctalia/legacy-v4";
+    noctalia = {
+      url = "github:noctalia-dev/noctalia";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
